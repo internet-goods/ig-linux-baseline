@@ -40,5 +40,5 @@ apt-get -y install python3-pip
 apt-get -y install python3-csvkit
 apt-get -y install jq
 apt-get -y install lynis
-apt -y install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils libguestfs-tools genisoimage virtinst libosinfo-bin
+apt -y install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils libguestfs-tools genisoimage virtinst libosinfo-bin virt-manager
 apt -y install speedtest-cli
