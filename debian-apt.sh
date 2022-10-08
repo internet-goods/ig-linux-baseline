@@ -39,3 +39,4 @@ apt-get -y install rdfind
 apt-get -y install python3-pip
 apt-get -y install python3-csvkit
 apt-get -y install jq
+apt-get -y install lynis
