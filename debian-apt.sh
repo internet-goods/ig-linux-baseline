@@ -12,7 +12,7 @@ apt-get -y install clamav yara rkhunter aide chkrootkit acct logwatch tripwire f
 #forensics
 apt-get -y install strace gdb dcfldd pngcheck autopsy ddrescue 
 #media
-apt-get -y install mpv smplayer audacity geeqie gimp sox vlc*
+apt-get -y install mpv smplayer vlc geeqie gimp sox
 #hamradio
 apt-get -y install gnuradio rtl-sdr hackrf gqrx-sdr kismet* 
 #benchmarking
