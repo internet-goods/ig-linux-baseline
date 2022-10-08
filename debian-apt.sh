@@ -1,4 +1,4 @@
-
+apt-get -y install mmc-utils
 apt-get -y install ethtool
 apt-get -y install ntpstat ntpdate ntp
 apt-get -y install gkrellm* lshw
