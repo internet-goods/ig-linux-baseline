@@ -6,4 +6,5 @@ apt-get -y install airgeddon
 apt-get -y install btscanner
 apt-get -y install eaphammer
 apt-get -y install python2-dev libpcap-dev
+apt-get -y install hostap
 apt -y autoremove 
