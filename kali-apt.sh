@@ -5,5 +5,5 @@ apt-get -y install ghidra
 apt-get -y install airgeddon
 apt-get -y install btscanner
 apt-get -y install eaphammer
-
+apt-get -y install python2-dev
 apt -y autoremove 
