@@ -3,7 +3,7 @@ apt-get -y install ethtool
 apt-get -y install ntpstat ntpdate ntp
 apt-get -y install gkrellm* lshw
 apt-get -y install libimage-exiftool-perl zsteg
-apt-get -y install htop iotop iftop lm-sensors audispd-plugins usbguard sysstat hddtemp hdparm
+  apt-get -y install htop iotop iftop lm-sensors audispd-plugins usbguard sysstat hdparm
   apt-get -y install suricata* psad chaosreader ipcalc driftnet arpwatch arpon
 #selinux
 apt-get -y install setools setools-gui selinux-policy-default selinux-basics 
@@ -40,4 +40,5 @@ apt-get -y install python3-pip
 apt-get -y install python3-csvkit
 apt-get -y install jq
 apt-get -y install lynis
-apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils libguestfs-tools genisoimage virtinst libosinfo-bin
+apt -y install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils libguestfs-tools genisoimage virtinst libosinfo-bin
+apt -y install speedtest-cli
