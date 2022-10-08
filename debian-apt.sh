@@ -40,3 +40,4 @@ apt-get -y install python3-pip
 apt-get -y install python3-csvkit
 apt-get -y install jq
 apt-get -y install lynis
+apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils libguestfs-tools genisoimage virtinst libosinfo-bin
