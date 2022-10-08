@@ -1,3 +1,5 @@
+
+apt-get -y install bettercap
 apt-get -y install rng-tools
 apt-get -y install mmc-utils
 apt-get -y install ethtool
