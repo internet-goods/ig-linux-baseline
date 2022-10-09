@@ -1,4 +1,5 @@
-#dk.archive.ubuntu.com
+#dk.archive.ubuntu.com stuff im not sure is in debian
+apt-get -y install apktool
 apt-get -y install checksec
 apt-get -y install hcxtools
 apt-get -y install ghidra 
