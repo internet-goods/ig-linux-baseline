@@ -8,5 +8,9 @@ rc-service rngd start
 rc-update add rngd
 rc-update add thermald
 rc-service thermald start
+rc-update add lm_sensors
+rc-service lm_sensors start
+rc-update add sensord
+rc-service sensord start
 
 rc-update -v show
