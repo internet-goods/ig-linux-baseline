@@ -1,3 +1,4 @@
+apt -y install wavemon
 apt -y install ccze
 apt -y install horst
 apt-get -y install sendmail alpine
