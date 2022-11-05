@@ -5,3 +5,4 @@ yum -y install lm_sensors smartmontools
 yum -y install alpine
 yum -y install masscan nmap
 yum -y install iw wavemon
+yum -y install gcc
