@@ -30,7 +30,7 @@ apt-get -y upgrade chromium firefox w3m lynx
 #proxy
 apt-get -y install privoxy docker-compose
 #math
-apt-get -y install sagemath libreoffice-calc
+apt-get -y install libreoffice-calc
 apt-get -y install bc
 #pam
 apt-get -y install libpam-tmpdir libpam-usb libpam-cracklib libpam-passwdqc
