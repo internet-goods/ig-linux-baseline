@@ -1,3 +1,4 @@
+apt -y install v4l-utils
 apt -y install wavemon
 apt -y install ccze
 apt -y install horst
