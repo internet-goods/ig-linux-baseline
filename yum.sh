@@ -13,3 +13,5 @@ yum -y install sysbench hdparm
 yum -y install mpv
 yum -y install pidgin*
 yum -y install keepassxc
+yum -y install vim
+yum -y install geeqie gimp
