@@ -1,3 +1,4 @@
+apt -y install libssl-dev
 apt -y install libsqlite3-dev
 apt -y install zoneminder
 apt -y install pdfgrep
