@@ -1,3 +1,7 @@
+apt -y install protobuf-compiler
+apt -y install libwebsockets-dev
+apt -y install libprotobuf-c-dev
+apt -y install libprotobuf-dev
 apt -y install libssl-dev
 apt -y install libsqlite3-dev
 apt -y install zoneminder
