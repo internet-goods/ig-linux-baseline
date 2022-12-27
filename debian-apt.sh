@@ -1,3 +1,4 @@
+apt -y install screen
 apt -y install libnl*
 apt -y install libpcre3-dev
 apt -y install libnm-dev
