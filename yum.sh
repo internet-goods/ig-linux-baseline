@@ -15,6 +15,6 @@ yum -y install pidgin*
 yum -y install keepassxc
 yum -y install vim
 yum -y install geeqie gimp
-yum -y install audacious sox
+yum -y install audacity sox
 yum -y install rtl-sdr hackrf gnuradio*
 yum -y install psacct
