@@ -20,3 +20,4 @@ yum -y install rtl-sdr hackrf gnuradio*
 yum -y install psacct
 dnf -y install snapd
 dnf -y install hashcat
+dnf -y install aircrack-ng
