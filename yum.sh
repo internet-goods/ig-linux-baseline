@@ -19,3 +19,4 @@ yum -y install audacity sox
 yum -y install rtl-sdr hackrf gnuradio*
 yum -y install psacct
 dnf -y install snapd
+dnf -y install hashcat
