@@ -40,7 +40,8 @@ apt-get -y install gnuradio rtl-sdr hackrf gqrx-sdr kismet*
 #benchmarking
 apt-get -y install boinc-client boinc-manager iozone3 sysbench
 #vuln scanners
-apt-get -y install openvas* sqlmap nikto wapiti 
+apt-get -y install openvas
+apt-get -y install sqlmap nikto wapiti 
 #browsers
 apt-get -y upgrade chromium firefox w3m lynx
 #proxy
