@@ -15,3 +15,6 @@ git clone https://github.com/MS-WEB-BN/h4rpy
 git clone https://github.com/philcryer/wpa2own
 #git clone https://github.com/s0lst1c3/eaphammer
 git clone https://github.com/br101/horst
+git clone https://github.com/notpike/SDR-Notes/
+#heatmap.py
+git clone https://github.com/keenerd/rtl-sdr-misc
