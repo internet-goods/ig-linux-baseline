@@ -66,3 +66,4 @@ apt-get -y install jq
 apt-get -y install lynis
 apt -y install qemu-kvm qemu-system-arm qemu-system-x86 virt-manager
 apt -y install speedtest-cli
+apt -y install mdadm
