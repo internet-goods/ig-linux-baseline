@@ -5,3 +5,5 @@ emerge logrotate
 emerge thunderbird
 emerge gimp
 emerge app-crypt/steghide
+emerge net-analyzer/dirsearch
+
