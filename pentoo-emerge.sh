@@ -13,3 +13,4 @@ emerge net-analyzer/testssl
 emerge net-analyzer/xsstrike
 emerge net-wireless/uhd
 emerge net-wireless/airgeddon
+emerge net-wireless/eaphammer
