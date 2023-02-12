@@ -11,3 +11,5 @@ emerge net-analyzer/ffuf
 emerge net-analyzer/masscan
 emerge net-analyzer/testssl
 emerge net-analyzer/xsstrike
+emerge net-wireless/uhd
+emerge net-wireless/airgeddon
