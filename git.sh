@@ -18,3 +18,22 @@ git clone https://github.com/br101/horst
 git clone https://github.com/notpike/SDR-Notes/
 #heatmap.py
 git clone https://github.com/keenerd/rtl-sdr-misc
+git clone https://github.com/berzerk0/Probable-Wordlists
+git clone https://github.com/danielmiessler/SecLists
+git clone https://github.com/w181496/Web-CTF-Cheatsheet
+git clone https://github.com/zardus/ctf-tools
+git clone https://github.com/jameslyons/python_cryptanalysis
+git clone https://github.com/prbinu/tls-scan
+git clone https://github.com/golismero/golismero
+git clone https://github.com/codingo/NoSQLMap
+#part of ctftoolsgit clone https://github.com/DominicBreuker/stego-toolkit
+git clone https://github.com/0xgas/pyXor/
+git clone https://github.com/kurobeats/fimap/
+git clone https://github.com/P0cL4bs/Kadimus
+git clone https://github.com/D35m0nd142/LFISuite
+git clone https://github.com/longld/peda
+git clone https://github.com/dirtbags/fluffy
+git clone https://github.com/sherlly/PCRT
+git clone https://github.com/DEMON1A/CTF-RSA-Solver
+git clone https://github.com/payloadbox/sql-injection-payload-list
+git clone https://github.com/danielcardeenas/AudioStego
