@@ -6,4 +6,8 @@ emerge thunderbird
 emerge gimp
 emerge app-crypt/steghide
 emerge net-analyzer/dirsearch
-
+emerge binwalk
+emerge net-analyzer/ffuf
+emerge net-analyzer/masscan
+emerge net-analyzer/testssl
+emerge net-analyzer/xsstrike
