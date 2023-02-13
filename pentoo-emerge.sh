@@ -14,3 +14,4 @@ emerge net-analyzer/xsstrike
 emerge net-wireless/uhd
 emerge net-wireless/airgeddon
 emerge net-wireless/eaphammer
+emerge suricata
