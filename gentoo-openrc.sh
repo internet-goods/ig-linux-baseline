@@ -12,5 +12,5 @@ rc-update add lm_sensors
 rc-service lm_sensors start
 rc-update add sensord
 rc-service sensord start
-
+rc-update add mdraid boot
 rc-update -v show
