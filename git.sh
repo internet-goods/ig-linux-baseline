@@ -38,3 +38,4 @@ git clone https://github.com/DEMON1A/CTF-RSA-Solver
 git clone https://github.com/payloadbox/sql-injection-payload-list
 git clone https://github.com/danielcardeenas/AudioStego
 git clone https://github.com/chrislockard/api_wordlist
+git clone https://github.com/EarToEarOak/RTLSDR-Scanner/releases
