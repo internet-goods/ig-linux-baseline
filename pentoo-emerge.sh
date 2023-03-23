@@ -16,3 +16,4 @@ emerge net-wireless/uhd
 emerge net-wireless/airgeddon
 emerge net-wireless/eaphammer
 emerge suricata
+emerge sys-apps/hwinfo
