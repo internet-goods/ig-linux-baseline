@@ -39,4 +39,4 @@ git clone https://github.com/payloadbox/sql-injection-payload-list
 git clone https://github.com/danielcardeenas/AudioStego
 git clone https://github.com/chrislockard/api_wordlist
 git clone https://github.com/EarToEarOak/RTLSDR-Scanner/releases
-git clone https://github.com/morrownr/88x2bu-20210702
+git clone https://github.com/raplin/rtl8814au
