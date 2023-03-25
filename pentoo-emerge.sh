@@ -18,3 +18,4 @@ emerge net-wireless/eaphammer
 emerge suricata
 emerge sys-apps/hwinfo
 emerge net-im/signal-desktop-bin
+emerge dev-python/pip
