@@ -21,3 +21,4 @@ emerge net-im/signal-desktop-bin
 emerge dev-python/pip
 emerge mpv
 emerge libheif
+emerge dev-python/jq
