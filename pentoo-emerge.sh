@@ -22,3 +22,4 @@ emerge dev-python/pip
 emerge mpv
 emerge libheif
 emerge dev-python/jq
+emerge app-arch/bzip2
