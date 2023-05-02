@@ -44,3 +44,4 @@ echo "-w /sbin/modprobe -p x -k modules" >> /etc/audit/rules.d/debian-baseline.c
 echo "-a always,exit arch=b64 -S init_module -S delete_module -k modules" >> /etc/audit/rules.d/debian-baseline.conf
 update-rc.d auditd enable
 service auditd start
+sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
