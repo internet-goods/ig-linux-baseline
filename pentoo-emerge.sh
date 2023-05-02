@@ -26,3 +26,4 @@ emerge app-arch/bzip2
 emerge lshw
 emerge app-misc/mc
 #segfaults emerge net-wireless/btscanner
+emerge net-analyzer/testssl
