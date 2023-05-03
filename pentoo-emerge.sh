@@ -28,3 +28,4 @@ emerge app-misc/mc
 #segfaults emerge net-wireless/btscanner
 emerge net-analyzer/testssl
 emerge net-mail/swaks
+net-analyzer/arp-scan
