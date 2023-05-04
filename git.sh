@@ -42,3 +42,4 @@ git clone https://github.com/EarToEarOak/RTLSDR-Scanner/releases
 git clone https://github.com/raplin/rtl8814au
 git clone https://github.com/leonjza/ooktools
 git clone https://github.com/threat9/routersploit
+git clone https://github.com/AndrewMohawk/RfCatHelpers/
