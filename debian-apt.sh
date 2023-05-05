@@ -29,7 +29,7 @@ apt-get -y install libimage-exiftool-perl zsteg
   apt-get -y install htop iotop iftop lm-sensors audispd-plugins usbguard sysstat hdparm
   apt-get -y install suricata* psad chaosreader ipcalc driftnet arpwatch arpon
 #selinux
-apt-get -y install setools setools-gui selinux-policy-default selinux-basics 
+#apt-get -y install setools setools-gui selinux-policy-default selinux-basics 
 #av
 apt-get -y install clamav yara rkhunter aide chkrootkit acct logwatch tripwire fail2ban
 #forensics
