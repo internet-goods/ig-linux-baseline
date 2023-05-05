@@ -31,7 +31,7 @@ apt-get -y install libimage-exiftool-perl zsteg
 #selinux
 #apt-get -y install setools setools-gui selinux-policy-default selinux-basics 
 #av
-apt-get -y install clamav yara rkhunter aide chkrootkit acct logwatch tripwire fail2ban
+#apt-get -y install clamav yara rkhunter aide chkrootkit acct logwatch tripwire fail2ban
 #forensics
 apt-get -y install strace gdb dcfldd pngcheck autopsy ddrescue 
 #media
