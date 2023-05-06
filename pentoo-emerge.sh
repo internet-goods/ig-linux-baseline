@@ -30,3 +30,4 @@ emerge net-analyzer/testssl
 emerge net-mail/swaks
 net-analyzer/arp-scan
 emerge =dev-lang/python-2*
+emerge media-tv/v4l-utils
