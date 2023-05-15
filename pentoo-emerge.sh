@@ -33,3 +33,4 @@ emerge =dev-lang/python-2*
 emerge media-tv/v4l-utils
 emerge dev-python/notebook
 emerge dev-embedded/sdcc
+emerge net-firewall/ipset
