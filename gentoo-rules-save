@@ -7,6 +7,7 @@
 [825:268313] -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 [0:0] -A INPUT -d 224.0.0.1/32 -j DROP
 [0:0] -A INPUT -d 224.0.0.251/32 -j DROP
+[0:0] -A INPUT -d 239.255.255.250/32 -j DROP
 [5:300] -A INPUT -i lo -j ACCEPT
 
 [0:0] -A INPUT -d 127.0.0.0/8 ! -i lo -j REJECT --reject-with icmp-port-unreachable
