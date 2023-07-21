@@ -35,3 +35,4 @@ emerge dev-python/jq
 emerge dev-embedded/sdcc
 emerge net-firewall/ipset
 emerge net-irc/irssi
+emerge dev-python/csvkit
