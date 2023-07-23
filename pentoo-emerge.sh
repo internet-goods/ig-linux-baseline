@@ -36,3 +36,5 @@ emerge dev-embedded/sdcc
 emerge net-firewall/ipset
 emerge net-irc/irssi
 emerge dev-python/csvkit
+emerge app-admin/keepassxc
+emerge www-client/google-chrome-unstable
