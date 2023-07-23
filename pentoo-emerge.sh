@@ -10,7 +10,7 @@ emerge logrotate
 #dd has status=progress now emerge dclfdd
 emerge terminator
 emerge media-gfx/gimp
-emerge media-gfx/geeqie
+#preinstalled now emerge media-gfx/geeqie
 emerge app-crypt/steghide
 emerge app-misc/binwalk
 emerge net-analyzer/arp-scan
@@ -47,6 +47,8 @@ emerge dev-python/csvkit
 emerge app-admin/keepassxc
 emerge www-client/google-chrome-unstable
 emerge media-sound/supercollider
+emerge app-office/libreoffice-bin
+emerge net-p2p/transmission
 #unstable packages segfault or wont install
 #emerge net-wireless/btscanner
 #emerge net-wireless/horst
