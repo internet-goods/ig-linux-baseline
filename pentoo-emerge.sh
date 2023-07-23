@@ -7,6 +7,7 @@ emerge app-antivirus/clamav
 emerge sys-process/audit
 emerge net-proxy/privoxy
 emerge logrotate
+emerge sys-apps/smartmontools
 #apps to run
 #dd has status=progress now emerge dclfdd
 emerge terminator
