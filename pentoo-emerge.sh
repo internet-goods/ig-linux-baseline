@@ -1,3 +1,4 @@
+#for normal non-full pentoo
 #daemons to configure
 emerge mdadm
 emerge mail-mta/sendmail
@@ -26,6 +27,7 @@ emerge net-wireless/airgeddon
 emerge net-wireless/wavemon
 emerge net-wireless/eaphammer
 emerge net-wireless/urh
+emerge net-wireless/rfcat
 emerge sys-apps/hwinfo
 emerge net-im/signal-desktop-bin
 emerge media-video/mpv
@@ -45,10 +47,17 @@ emerge net-firewall/ipset
 emerge net-irc/irssi
 emerge dev-python/csvkit
 emerge app-admin/keepassxc
-emerge www-client/google-chrome-unstable
 emerge media-sound/supercollider
 emerge app-office/libreoffice-bin
 emerge net-p2p/transmission
+emerge net-im/pidgin
+emerge net-im/signal-desktop-bin
+emerge www-client/firefox-bin
+emerge www-client/google-chrome-unstable
+emerge mail-client/thunderbird-bin
+emerge mail-client/alpine
+emerge media-video/cheese
+
 #unstable packages segfault or wont install
 #emerge net-wireless/btscanner
 #emerge net-wireless/horst
