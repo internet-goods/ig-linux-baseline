@@ -8,6 +8,8 @@ emerge sys-process/audit
 emerge net-proxy/privoxy
 emerge logrotate
 emerge sys-apps/smartmontools
+emerge --config dev-db/postgresql:15
+
 #apps to run
 #dd has status=progress now emerge dclfdd
 emerge terminator
@@ -23,6 +25,7 @@ emerge net-analyzer/testssl
 emerge net-analyzer/xsstrike
 emerge net-analyzer/iftop
 emerge net-analyzer/multimon-ng
+emerge net-analyzer/metasploit
 emerge net-wireless/uhd
 emerge net-wireless/airgeddon
 emerge net-wireless/wavemon
@@ -59,6 +62,9 @@ emerge mail-client/thunderbird-bin
 emerge mail-client/alpine
 emerge media-video/cheese
 emerge sys-apps/haveged
+emerge app-exploits/routersploit
+
+emerge 
 #unstable packages segfault or wont install
 #emerge net-wireless/btscanner
 #emerge net-wireless/horst
