@@ -58,7 +58,7 @@ emerge www-client/google-chrome-unstable
 emerge mail-client/thunderbird-bin
 emerge mail-client/alpine
 emerge media-video/cheese
-
+emerge sys-apps/haveged
 #unstable packages segfault or wont install
 #emerge net-wireless/btscanner
 #emerge net-wireless/horst
