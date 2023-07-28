@@ -48,4 +48,4 @@ sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 update-rc.d auditd enable
 service auditd start
 /etc/init.d/auditd start
-rc-update enable auditd
+rc-update add auditd
