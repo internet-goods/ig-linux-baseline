@@ -6,6 +6,7 @@ bash ./gentoo-localtime.sh
 mkdir /etc/NetworkManager/conf.d
 #ignore interfaces other than wlan0
 cp ./ig-NetworkManager-baseline.conf /etc/NetworkManager/conf.d
-cp ./gentoo-rules/save /var/lib/iptables/rules-save
+cp ./gentoo-rules-save /var/lib/iptables/rules-save
+cp ./issue /etc/issue
 #TODO ipv6 version of this
 
