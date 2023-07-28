@@ -63,8 +63,11 @@ emerge mail-client/thunderbird-bin
 emerge mail-client/alpine
 emerge media-video/cheese
 emerge app-exploits/routersploit
-
-emerge 
+emerge app-forensics/yara
+emerge app-forensics/bulk_extractor
+emerge app-forensics/zsteg
+emerge app-forensics/eagleeye
+emerge dev-util/strace
 #unstable packages segfault or wont install
 #emerge net-wireless/btscanner
 #emerge net-wireless/horst
