@@ -9,6 +9,7 @@ emerge net-proxy/privoxy
 emerge logrotate
 emerge sys-apps/smartmontools
 emerge --config dev-db/postgresql:15
+emerge sys-apps/haveged
 
 #apps to run
 #dd has status=progress now emerge dclfdd
@@ -61,7 +62,6 @@ emerge www-client/google-chrome-unstable
 emerge mail-client/thunderbird-bin
 emerge mail-client/alpine
 emerge media-video/cheese
-emerge sys-apps/haveged
 emerge app-exploits/routersploit
 
 emerge 
