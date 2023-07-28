@@ -33,7 +33,6 @@ emerge net-wireless/eaphammer
 emerge net-wireless/urh
 emerge net-wireless/rfcat
 emerge sys-apps/hwinfo
-emerge net-im/signal-desktop-bin
 emerge media-video/mpv
 emerge media-tv/v4l-utils
 emerge media-sound/audacity
@@ -56,6 +55,7 @@ emerge app-office/libreoffice-bin
 emerge net-p2p/transmission
 emerge net-im/pidgin
 emerge net-im/signal-desktop-bin
+emerge net-im/discord
 emerge www-client/firefox-bin
 emerge www-client/google-chrome-unstable
 emerge mail-client/thunderbird-bin
