@@ -1,4 +1,3 @@
-apt-get -y install auditd
 echo "-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change" > /etc/audit/rules.d/debian-baseline.conf
 echo "-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change" >> /etc/audit/rules.d/debian-baseline.conf
 echo "-a always,exit -F arch=b64 -S clock_settime -k time-change" >> /etc/audit/rules.d/debian-baseline.conf
@@ -44,6 +43,9 @@ echo "-w /sbin/modprobe -p x -k modules" >> /etc/audit/rules.d/debian-baseline.c
 echo "-a always,exit arch=b64 -S init_module -S delete_module -k modules" >> /etc/audit/rules.d/debian-baseline.conf
 echo "-b 8192" >> /etc/audit/rules.d/debian-baseline.conf
 
+
+sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 update-rc.d auditd enable
 service auditd start
-sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
+/etc/init.d/auditd start
+rc-update enable auditd
