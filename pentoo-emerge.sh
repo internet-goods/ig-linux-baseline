@@ -10,6 +10,7 @@ emerge logrotate
 emerge sys-apps/smartmontools
 emerge --config dev-db/postgresql:15
 emerge sys-apps/haveged
+emerge sys-apps/rng-tools
 emerge app-admin/sysstat
 #apps to run
 #dd has status=progress now emerge dclfdd
