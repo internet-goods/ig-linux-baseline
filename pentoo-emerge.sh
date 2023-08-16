@@ -38,6 +38,7 @@ emerge sys-apps/hwinfo
 emerge media-video/mpv
 emerge media-tv/v4l-utils
 emerge media-sound/audacity
+emerge  --autounmask-write --autounmask media-sound/supercollider
 emerge libheif
 emerge app-arch/bzip2
 emerge lshw
@@ -52,7 +53,6 @@ emerge net-firewall/ipset
 emerge net-irc/irssi
 emerge dev-python/csvkit
 emerge app-admin/keepassxc
-emerge media-sound/supercollider
 emerge app-office/libreoffice-bin
 emerge net-p2p/transmission
 emerge net-im/pidgin
