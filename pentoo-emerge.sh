@@ -76,3 +76,6 @@ emerge dev-util/strace
 #emerge net-wireless/horst
 emerge net-wireless/blue_hydra
 emerge net-wireless/dump1090
+emerge app-text/xpdf
+emerge games-roguelike/nethack
+
