@@ -76,6 +76,10 @@ emerge dev-util/strace
 #emerge net-wireless/horst
 emerge net-wireless/blue_hydra
 emerge net-wireless/dump1090
+emerge net-wireless/gr-osmosdr
+emerge net-wireless/gr-rds
+emerge net-wireless/gqrx-scanner
+emerge net-wireless/mdk
 emerge app-text/xpdf
 emerge games-roguelike/nethack
 
