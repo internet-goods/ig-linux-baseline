@@ -72,5 +72,7 @@ emerge app-forensics/eagleeye
 emerge dev-util/strace
 #unstable packages segfault or wont install
 #emerge net-wireless/btscanner
+
 #emerge net-wireless/horst
 emerge net-wireless/blue_hydra
+emerge net-wireless/dump1090
