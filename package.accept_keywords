@@ -1,0 +1,11 @@
+games-roguelike/nethack ~amd64
+dev-ruby/zpng ~amd64
+dev-ruby/iostruct ~amd64
+app-forensics/zsteg ~amd64
+media-sound/supercollider ~amd64
+dev-python/simple-websocket ~amd64
+app-misc/jq ~amd64
+www-client/google-chrome-unstable ~amd64
+net-analyzer/suricata ~amd64
+net-libs/libhtp ~amd64
+sec-keys/openpgp-keys-oisf ~amd64
