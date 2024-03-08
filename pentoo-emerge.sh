@@ -60,7 +60,8 @@ emerge net-im/signal-desktop-bin
 emerge net-im/discord
 emerge www-client/firefox-bin
 echo "*/* google-chrome" > /etc/portage/package.license
-emerge  --autounmask-write --autounmask  www-client/google-chrome-unstable 
+echo www-client/google-chrome-unstable ~amd64 >> /etc/portage/package.accept_keywords
+emerge www-client/google-chrome-unstable 
 emerge mail-client/thunderbird-bin
 emerge mail-client/alpine
 emerge media-video/cheese
