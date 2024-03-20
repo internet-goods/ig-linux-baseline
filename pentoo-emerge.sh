@@ -15,6 +15,8 @@ emerge --config dev-db/postgresql:15
 emerge sys-apps/haveged
 emerge sys-apps/rng-tools
 emerge app-admin/sysstat
+echo app-forensics/lynis ~amd64 >> /etc/portage/package.accept_keywords
+emerge app-forensics/lynis
 #apps to run
 #dd has status=progress now emerge dclfdd
 emerge terminator
