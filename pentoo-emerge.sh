@@ -2,6 +2,9 @@
 #daemons to configure
 emerge mdadm
 emerge mail-mta/sendmail
+echo net-analyzer/suricata ~amd64 >> /etc/portage/package.accept_keywords
+echo net-libs/libhtp ~amd64 >> /etc/portage/package.accept_keywords
+echo sec-keys/openpgp-keys-oisf >> /etc/portage/package.accept_keywords
 emerge net-analyzer/suricata
 emerge app-antivirus/clamav
 emerge sys-process/audit
