@@ -36,6 +36,8 @@ emerge net-wireless/airgeddon
 echo dev-libs/libnl ~amd64 >> /etc/portage/package.accept_keywords
 sed -i 's/opencl/opencl utils/g' /etc/portage/make.conf
 emerge net-wireless/wavemon
+echo net-wireless/horst ~amd64 >> /etc/portage/package.accept_keywords
+emerge net-wireless/horst
 emerge net-wireless/eaphammer
 emerge net-wireless/urh
 emerge net-wireless/rfcat
