@@ -76,7 +76,7 @@ emerge app-forensics/eagleeye
 emerge dev-util/strace
 #unstable packages segfault or wont install
 #emerge net-wireless/btscanner
-
+emerge sys-apps/inxi
 #emerge net-wireless/horst
 emerge net-wireless/blue_hydra
 emerge net-wireless/dump1090
@@ -86,4 +86,9 @@ emerge net-wireless/gqrx-scanner
 emerge net-wireless/mdk
 emerge app-text/xpdf
 emerge games-roguelike/nethack
+#virtualization
+emerge app-containers/docker
+emerge app-emulation/libvirt
+emerge app-emulation/virt-manager
+emerge app-emulation/virtualbox
 
