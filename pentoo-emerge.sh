@@ -94,6 +94,7 @@ emerge games-roguelike/nethack
 #virtualization
 emerge app-containers/docker
 emerge app-containers/docker-compose
+emerge app-containers/docker-cli
 emerge app-emulation/libvirt
 emerge app-emulation/virt-manager
 emerge app-emulation/virtualbox
