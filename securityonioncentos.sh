@@ -1,6 +1,6 @@
 dnf -y install epel-release
 #monitoring
-dnf -y install htop sysstat iotop smartmontools
+dnf -y install htop sysstat iotop smartmontools lsof
 systemctl enable smartd
 #client apps
 dnf -y install screen alpine lynx
