@@ -44,3 +44,4 @@ git clone https://github.com/leonjza/ooktools
 git clone https://github.com/threat9/routersploit
 git clone https://github.com/AndrewMohawk/RfCatHelpers/
 git clone https://github.com/antirez/dump1090
+git clone https://github.com/jtesta/ssh-audit
