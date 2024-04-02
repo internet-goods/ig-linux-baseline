@@ -46,3 +46,4 @@ git clone https://github.com/AndrewMohawk/RfCatHelpers/
 git clone https://github.com/antirez/dump1090
 git clone https://github.com/jtesta/ssh-audit
 # over 1G in size git clone https://github.com/Ignitetechnologies/Mindmap/
+git clone https://github.com/major/MySQLTuner-perl/
