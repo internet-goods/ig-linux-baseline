@@ -15,6 +15,7 @@ emerge --config dev-db/postgresql:15
 emerge sys-apps/haveged
 emerge sys-apps/rng-tools
 emerge app-admin/sysstat
+emerge app-admin/gkrellm
 #disk usage graph
 emerge sys-apps/baobab
 echo app-forensics/lynis ~amd64 >> /etc/portage/package.accept_keywords
