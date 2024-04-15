@@ -1,3 +1,8 @@
 Internet Goods Hardening scripts for Linux and CTFs.
-Test with lynis.
+Test with lynis afterwards! 
+Kali
 # kali-baseline.sh; apt-get lynis; lynis audit system 
+Pentoo
+#pentoo-baseline.sh; lynis audit system
+Security Onion Oracle Linux
+#securityonioncentos.sh; lynis audit system
