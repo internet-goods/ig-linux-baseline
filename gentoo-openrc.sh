@@ -6,7 +6,7 @@ rc-service ip6tables start
 rc-update add ip6tables
 rc-service smartd start
 rc-update add smartd
-rc-service smartd sendmail
+rc-service smartd start
 rc-update add sendmail
 rc-service haveged start
 rc-update add haveged
