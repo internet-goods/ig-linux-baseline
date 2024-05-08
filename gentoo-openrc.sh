@@ -21,5 +21,7 @@ rc-service sensord start
 rc-update add mdraid boot
 rc-service privoxy start
 rc-update add privoxy
+rc-service auditd start
+rc-update-add auditd
 rc-update -v show
 rc-status
