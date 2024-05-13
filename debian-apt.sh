@@ -53,7 +53,8 @@ apt-get -y install bc
 #pam
 apt-get -y install libpam-tmpdir libpam-usb libpam-cracklib libpam-passwdqc
 #apt
-apt-get -y install apt-listbugs debian-goodies needrestart debsecan debsums apt-transport-https
+apt-get -y install apt-listbugs debian-goodies needrestart debsecan apt-transport-https
+apt-get -y install debsums
 apt-get -y install unattended-upgrades apt-listchanges
 #hardening
 apt-get -y install tiger
