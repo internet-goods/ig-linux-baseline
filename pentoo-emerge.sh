@@ -61,6 +61,8 @@ emerge =dev-lang/python-2*
 emerge dev-python/pip
 emerge dev-python/notebook
 emerge dev-python/jq
+emerge dev-python/selenium
+emerge dev-python/requests
 emerge dev-embedded/sdcc
 emerge net-firewall/ipset
 emerge net-irc/irssi
