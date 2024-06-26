@@ -71,6 +71,7 @@ apt -y install sdcc
 apt -y install qemu-kvm qemu-system-arm qemu-system-x86 virt-manager
 apt -y install speedtest-cli
 apt -y install mdadm
+apt -y install x11-apps
 wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
 cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
 
