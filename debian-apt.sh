@@ -19,6 +19,7 @@ apt -y install wavemon
 apt -y install ccze
 apt -y install horst
 apt -y install hashcat*
+apt -y install nvidia-cuda-toolkit
 apt-get -y install sendmail alpine
 apt-get -y install bettercap
 apt-get -y install rng-tools
