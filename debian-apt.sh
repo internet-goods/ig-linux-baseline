@@ -18,6 +18,7 @@ apt -y install v4l-utils
 apt -y install wavemon
 apt -y install ccze
 apt -y install horst
+apt -y install hashcat*
 apt-get -y install sendmail alpine
 apt-get -y install bettercap
 apt-get -y install rng-tools
