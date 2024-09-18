@@ -43,6 +43,7 @@ rkhunter --update
 mkdir misp-docker
 cp misp-docker-compose.yml misp-docker/docker-compose.yml
 cp misp-env misp-docker/.env
-docker compose up -d
+cd misp-docker
+sudo docker compose up -d
 
 
