@@ -40,5 +40,9 @@ systemctl enable sendmail
 systemctl start sendmail
 dnf -y install rkhunter
 rkhunter --update
+mkdir misp-docker
+cp misp-docker-compose.yml misp-docker/docker-compose.yml
+cp misp-env misp-docker/.env
+docker compose up -d
 
 
