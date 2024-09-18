@@ -1,9 +1,12 @@
 dnf -y install epel-release
 #monitoring
-dnf -y install htop sysstat iotop smartmontools lsof lm_sensors
+dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog
 yes|sensors-detect
 sensors
 systemctl enable smartd
+systemctl start smartd
+systemctl enable mcelog
+systemctl start mcelog
 #client apps
 dnf -y install screen alpine lynx ccze
 #hardening
@@ -31,3 +34,11 @@ echo "TCPKeepAlive no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 #echo "Port 220" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 echo "X11Forwarding no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
+timedatectl set-timezone America/Chicago
+dnf -y install sendmail
+systemctl enable sendmail
+systemctl start sendmail
+dnf -y install rkhunter
+rkhunter --update
+
+
