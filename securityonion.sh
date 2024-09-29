@@ -53,11 +53,22 @@ systemctl enable sendmail
 systemctl start sendmail
 dnf -y install rkhunter
 rkhunter --update
-mkdir misp-docker
-cp misp-so-docker-compose.yml misp-docker/docker-compose.yml
-cp misp-env misp-docker/.env
-cd misp-docker
-sudo docker compose up -d
+#mkdir misp-docker
+#cp misp-so-docker-compose.yml misp-docker/docker-compose.yml
+#cp misp-env misp-docker/.env
+#cd misp-docker
+#sudo docker compose up -d
 
-#so tuning
+#so tuning for 32g machine
 sed -i 's/812m/2048m/g' /opt/so/saltstack/default/salt/redis/defaults.yaml
+#elasticsearch
+sed -i 's/10753m/14336/g' /opt/so/saltstack/local/pilar/minions/securityonion_standalone.sls
+#logstash
+sed -i 's/1000m/4000m/g' /opt/so/saltstack/local/pilar/minions/securityonion_standalone.sls 
+#2 cores
+sed -i "s/lb_procs: '1'/lb_procs: '2'/g" /opt/so/saltstack/local/pillar/minions/security_onion_standalone.sls
+sed -i "s/threads: '1'/threads: '2'/g" /opt/so/saltstack/local/pillar/minions/security_onion_standalone.sls
+so-firewall includehost syslog 192.168.0.0/16
+so-firewall includehost fleet 192.168.0.0/16
+so-firewall includehost beats_endpoint_ssl 192.168.0.0/16
+so-firewall includehost elastic_agent_endpoint 192.168.0.0/16
