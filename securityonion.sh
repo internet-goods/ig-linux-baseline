@@ -35,6 +35,18 @@ echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/securityonion-baseline.
 echo "X11Forwarding no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 #disable core dumps with limits
 bash limits.sh
+#sysctl hardening
+echo "dev.tty.ldisc.autoload = 0" > /etc/sysctl.d/securityonion-baseline.conf
+echo "fs.protected_fifos = 2" >> /etc/sysctl.d/securityonion-baseline.conf
+echo "fs.protected_regular = 2" >> /etc/sysctl.d/securityonion-baseline.conf
+echo "fs.suid_dumpable = 0" >> /etc/sysctl.d/securityonion-baseline.conf
+echo "kernel.dmesg_restrict = 1" >> /etc/sysctl.d/securityonion-baseline.conf
+echo "kernel.kptr_restrict = 1" >> /etc/sysctl.d/securityonion-baseline.conf
+
+echo "kernel.perf_event_paranoid = 3" >> /etc/sysctl.d/securityonion-baseline.conf
+echo "kernel.sysrq = 0" >> /etc/sysctl.d/securityonion-baseline.conf
+echo "kernel.yama.ptrace_scope=3" >> /etc/sysctl.d/securityonion-baseline.conf
+
 timedatectl set-timezone America/Chicago
 dnf -y install sendmail
 systemctl enable sendmail
