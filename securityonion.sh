@@ -59,4 +59,5 @@ cp misp-env misp-docker/.env
 cd misp-docker
 sudo docker compose up -d
 
-
+#so tuning
+sed -i 's/812m/2048m/g' /opt/so/saltstack/default/salt/redis/defaults.yaml
