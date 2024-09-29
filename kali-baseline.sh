@@ -3,7 +3,7 @@ bash debian-auditd.sh
 bash debian-baseline.sh
 bash debian-cron.sh
 bash debian-iptables.sh
-bash debian-limits.sh
+bash limits.sh
 bash debian-login.defs.sh
 bash debian-modprobe.sh
 bash debian-mount.sh
