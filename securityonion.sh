@@ -8,7 +8,7 @@ systemctl start smartd
 systemctl enable mcelog
 systemctl start mcelog
 #client apps
-dnf -y install screen alpine lynx ccze
+dnf -y install screen alpine lynx ccze mlocate
 #hardening
 dnf -y install lynis openscap openscap-utils scap-security-guide
 #disable modules
