@@ -47,14 +47,14 @@ echo "kernel.perf_event_paranoid = 3" >> /etc/sysctl.d/securityonion-baseline.co
 echo "kernel.sysrq = 0" >> /etc/sysctl.d/securityonion-baseline.conf
 echo "kernel.yama.ptrace_scope=3" >> /etc/sysctl.d/securityonion-baseline.conf
 
-timedatectl set-timezone America/Chicago
+#timedatectl set-timezone America/Chicago
 dnf -y install sendmail
 systemctl enable sendmail
 systemctl start sendmail
 dnf -y install rkhunter
 rkhunter --update
 mkdir misp-docker
-cp misp-docker-compose.yml misp-docker/docker-compose.yml
+cp misp-so-docker-compose.yml misp-docker/docker-compose.yml
 cp misp-env misp-docker/.env
 cd misp-docker
 sudo docker compose up -d
