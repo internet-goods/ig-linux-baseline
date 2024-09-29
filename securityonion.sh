@@ -11,7 +11,6 @@ systemctl start mcelog
 dnf -y install screen alpine lynx ccze
 #hardening
 dnf -y install lynis openscap openscap-utils scap-security-guide
-lynis audit system
 #disable modules
 echo "install dccp /bin/true" >> /etc/modprobe.d/securityonion-baseline.conf
 echo "install sctp /bin/true" >> /etc/modprobe.d/securityonion-baseline.conf
@@ -34,6 +33,8 @@ echo "TCPKeepAlive no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 #echo "Port 220" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 echo "X11Forwarding no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
+#disable core dumps with limits
+bash limits.sh
 timedatectl set-timezone America/Chicago
 dnf -y install sendmail
 systemctl enable sendmail
