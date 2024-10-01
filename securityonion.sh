@@ -1,12 +1,14 @@
 dnf -y install epel-release
 #monitoring
-dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog
+dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog psacct
 yes|sensors-detect
 sensors
 systemctl enable smartd
 systemctl start smartd
 systemctl enable mcelog
 systemctl start mcelog
+systemctl enable psacct
+systemctl start psacct
 #client apps
 dnf -y install screen alpine lynx ccze mlocate
 #hardening
