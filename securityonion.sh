@@ -1,6 +1,6 @@
 dnf -y install epel-release
 #monitoring
-dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog psacct
+dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog psacct usbutils
 yes|sensors-detect
 sensors
 systemctl enable smartd
