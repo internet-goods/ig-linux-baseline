@@ -1,6 +1,10 @@
 dnf -y install epel-release
 #monitoring
 dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog psacct usbutils
+dnf -y install bluez rtl-sdr
+systemctl enable bluetooth
+systemctl start bluetooth
+
 yes|sensors-detect
 sensors
 systemctl enable smartd
