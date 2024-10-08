@@ -59,7 +59,7 @@ systemctl enable sendmail
 systemctl start sendmail
 dnf -y install rkhunter
 rkhunter --update
-dnf -y install clamav clamav-freshclam
+dnf -y install clamav clamav-freshclam clamd
 freshclam
 
 #mkdir misp-docker
@@ -83,4 +83,6 @@ so-firewall includehost beats_endpoint_ssl 192.168.0.0/16
 so-firewall includehost elastic_agent_endpoint 192.168.0.0/16
 #harden cron to pass lynis
 bash cron.sh
+
+systemctl list-unit-files --state=enabled
 
