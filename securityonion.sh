@@ -61,6 +61,7 @@ dnf -y install rkhunter
 rkhunter --update
 dnf -y install clamav clamav-freshclam clamd
 freshclam
+dnf -y install aide
 
 #mkdir misp-docker
 #cp misp-so-docker-compose.yml misp-docker/docker-compose.yml
@@ -95,4 +96,6 @@ oscap info /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml
  --profile xccdf_org.ssgproject.content_profile_pci-dss \
  --report report.html \
  /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml
+
+aide --init
 
