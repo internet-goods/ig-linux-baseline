@@ -94,8 +94,17 @@ oscap info /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml
 
  oscap xccdf eval \
  --profile xccdf_org.ssgproject.content_profile_pci-dss \
- --report report.html \
+ --report xccdf_org.ssgproject.content_profile_pci-dss.html \
  /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml
+
+oscap xccdf eval \
+ --profile xccdf_org.ssgproject.content_profile_stig \
+ --report xccdf_org.ssgproject.content_profile_stig.html \
+ /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml
+
+
+
+ 
 
 aide --init
 
