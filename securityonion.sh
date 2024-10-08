@@ -90,8 +90,11 @@ dnf -y install make m4
 
 
 systemctl list-unit-files --state=enabled
-oscap info /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml 
 
+
+oscap info /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml 
+mkdir $(date -I)
+cd $(date -I)
  oscap xccdf eval \
  --profile xccdf_org.ssgproject.content_profile_pci-dss \
  --report xccdf_org.ssgproject.content_profile_pci-dss.html \
@@ -106,11 +109,6 @@ oscap xccdf eval --fetch-remote-resources \
 --profile xccdf_org.ssgproject.content_profile_standard \
 --report xccdf_org.ssgproject.content_profile_standard.html \
 /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml
-
-
-
-
- 
-
+lynis audit system
 aide --init
 
