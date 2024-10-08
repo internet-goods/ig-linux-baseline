@@ -84,5 +84,9 @@ so-firewall includehost elastic_agent_endpoint 192.168.0.0/16
 #harden cron to pass lynis
 bash cron.sh
 
+#sometimes you gotta dev in prod
+dnf -y install make m4
+
+
 systemctl list-unit-files --state=enabled
 
