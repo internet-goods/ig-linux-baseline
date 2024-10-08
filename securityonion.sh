@@ -89,4 +89,10 @@ dnf -y install make m4
 
 
 systemctl list-unit-files --state=enabled
+oscap info /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml 
+
+ oscap xccdf eval \
+ --profile xccdf_org.ssgproject.content_profile_pci-dss \
+ --report report.html \
+ /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml
 
