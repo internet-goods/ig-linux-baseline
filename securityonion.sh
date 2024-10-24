@@ -63,6 +63,7 @@ dnf -y install clamav clamav-freshclam clamd
 freshclam
 dnf -y install aide
 
+
 #mkdir misp-docker
 #cp misp-so-docker-compose.yml misp-docker/docker-compose.yml
 #cp misp-env misp-docker/.env
@@ -110,5 +111,19 @@ oscap xccdf eval --fetch-remote-resources \
 --report xccdf_org.ssgproject.content_profile_standard.html \
 /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml
 lynis audit system
-aide --init
 
+git clone https://github.com/docker/docker-bench-security
+cd docker-bench-security
+sh docker-bench-security.sh
+cd ..
+wget https://rpmfind.net/linux/centos-stream/9-stream/AppStream/x86_64/os/Packages/golang-src-1.22.5-2.el9.noarch.rpm
+wget https://rpmfind.net/linux/centos-stream/9-stream/AppStream/x86_64/os/Packages/golang-race-1.22.5-2.el9.x86_64.rpm
+wget https://rpmfind.net/linux/centos-stream/9-stream/AppStream/x86_64/os/Packages/golang-bin-1.22.5-2.el9.x86_64.rpm
+wget https://rpmfind.net/linux/centos-stream/9-stream/AppStream/x86_64/os/Packages/golang-1.22.5-2.el9.x86_64.rpm
+rpm -Uvh golang-1.22.5-2.el9.x86_64.rpm golang-bin-1.22.5-2.el9.x86_64.rpm golang-race-1.22.5-2.el9.x86_64.rpm golang-src-1.22.5-2.el9.noarch.rpm
+
+
+
+
+aide --init
+cp /var/lib/aide.db.new.gz /var/lib/aide.db.gz
