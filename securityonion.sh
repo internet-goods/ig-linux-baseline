@@ -129,6 +129,7 @@ lynis audit system
 
 
 
-
+#GRUB_CMDLINE_LINUX="pcie_aspm=off pcie_port_pm=off"
 #aide --init
 #cp /var/lib/aide.db.new.gz /var/lib/aide.db.gz
+# update-grub 
