@@ -17,3 +17,6 @@ bash debian-update-rc.d.sh
 cp issue /etc/issue
 cp issue /etc/issue.net
 bash kali-sshd_config.sh
+#purge to pass lynis
+dpkg --get-selections | awk '$2=="deinstall" {system("sudo apt-get -y purge "$1)}'
+lynis audit system
