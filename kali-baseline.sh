@@ -17,6 +17,17 @@ bash debian-update-rc.d.sh
 cp issue /etc/issue
 cp issue /etc/issue.net
 bash kali-sshd_config.sh
+apt-get -y install apktool
+apt-get -y install checksec
+apt-get -y install hcxtools
+apt-get -y install ghidra 
+apt-get -y install airgeddon
+apt-get -y install btscanner
+apt-get -y install eaphammer
+apt-get -y install python2-dev libpcap-dev
+apt-get -y install hostapd hostapd-wpe
+apt -y autoremove 
+
 #purge to pass lynis
 dpkg --get-selections | awk '$2=="deinstall" {system("sudo apt-get -y purge "$1)}'
 lynis audit system
