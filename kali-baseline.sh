@@ -14,6 +14,7 @@ bash debian-rsyslog.conf.sh
 bash debian-sysctl.conf.sh
 bash debian-sysstat.sh
 bash debian-update-rc.d.sh
+mount -o remount,hidepid=2 /proc
 cp issue /etc/issue
 cp issue /etc/issue.net
 bash kali-sshd_config.sh
