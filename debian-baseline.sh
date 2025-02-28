@@ -126,3 +126,5 @@ echo "install tipc /bin/true" >> /etc/modprobe.d/debian-baseline.conf
 echo "install firewire-ohci /bin/true" >>  /etc/modprobe.d/debian-baseline.conf
 echo "install firewire-sbp2 /bin/true" >>  /etc/modprobe.d/debian-baseline.conf
 echo "install usb-storage /bin/true" >> /etc/modprobe.d/debian-baseline.conf
+
+echo umask 022 > /etc/profile.d/debian-baseline.sh
