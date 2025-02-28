@@ -62,3 +62,11 @@ echo "install firewire-sbp2 /bin/true" >>  /etc/modprobe.d/debian-baseline.conf
 echo "install usb-storage /bin/true" >> /etc/modprobe.d/debian-baseline.conf
 
 echo umask 022 > /etc/profile.d/debian-baseline.sh
+
+chmod 600 /etc/crontab
+chmod 700 /etc/cron.d
+chmod 700 /etc/cron.daily
+chmod 700 /etc/cron.hourly
+chmod 700 /etc/cron.weekly
+chmod 700 /etc/cron.monthly
+chmod 600 /etc/cron.deny
