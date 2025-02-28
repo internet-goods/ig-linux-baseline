@@ -3,7 +3,8 @@ bash debian-auditd.sh
 bash debian-baseline.sh
 bash debian-cron.sh
 bash debian-iptables.sh
-bash limits.sh
+echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
+echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
 
 bash debian-mount.sh
 sed -i 's/sha512/sha512 rounds=800000/g' /etc/pam.d/common-password
