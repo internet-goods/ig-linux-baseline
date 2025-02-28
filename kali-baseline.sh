@@ -6,7 +6,7 @@ bash debian-iptables.sh
 bash limits.sh
 
 bash debian-mount.sh
-bash debian-pam-common-password.sh
+sed -i 's/sha512/sha512 rounds=800000/g' /etc/pam.d/common-password
 bash debian-profile.sh
 bash debian-rsyslog.conf.sh
 bash debian-sysctl.conf.sh
