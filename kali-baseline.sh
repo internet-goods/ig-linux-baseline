@@ -10,7 +10,9 @@ sed -i 's/sha512/sha512 rounds=800000/g' /etc/pam.d/common-password
 bash debian-profile.sh
 bash debian-rsyslog.conf.sh
 bash debian-sysctl.conf.sh
-bash debian-sysstat.sh
+apt -y install sysstat
+systemctl enable sysstat
+sed -i 's/false/true/g' /etc/default/sysstat
 update-rc.d acct enable
 update-rc.d ssh enable
 service ssh start
