@@ -9,7 +9,6 @@ bash debian-modprobe.sh
 bash debian-mount.sh
 bash debian-pam-common-password.sh
 bash debian-profile.sh
-bash debian-rc.local.sh
 bash debian-rsyslog.conf.sh
 bash debian-sysctl.conf.sh
 bash debian-sysstat.sh
