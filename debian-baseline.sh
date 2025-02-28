@@ -3,7 +3,8 @@ debian-auditd.sh
 debian-baseline.sh
 debian-cron.sh
 debian-iptables.sh
-debian-limits.sh
+echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
+echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
 
 debian-modprobe.sh
 mount -o remount,hidepid=2 /proc
