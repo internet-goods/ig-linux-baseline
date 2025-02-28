@@ -6,7 +6,7 @@ debian-iptables.sh
 debian-limits.sh
 debian-login.defs.sh
 debian-modprobe.sh
-debian-mount.sh
+mount -o remount,hidepid=2 /proc
 debian-pam-common-password.sh
 debian-profile.sh
 debian-rc.local.sh
