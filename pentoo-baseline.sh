@@ -146,3 +146,4 @@ emerge app-containers/docker-cli
 emerge app-emulation/libvirt
 emerge app-emulation/virt-manager
 emerge app-emulation/virtualbox
+cp /usr/share/zoneinfo/America/Chicago /etc/localtime
