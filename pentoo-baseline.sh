@@ -39,7 +39,18 @@ cp audit.rules /etc/audit
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 /etc/init.d/auditd restart
 
-cp ig-pentoo-ssh.conf /etc/ssh/sshd_config.d
+
+echo "MACs -*sha1*,umac-64*,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512" > /etc/ssh/sshd_config.d/ig-pentoo-ssh.conf
+echo "KexAlgorithms -curve*,*sha2-nist*,diffie-hellman*" >> /etc/ssh/sshd_config.d/ig-pentoo-ssh.conf
+echo "HostKeyAlgorithms -ecdsa-sha2-nistp256" >> /etc/ssh/sshd_config.d/ig-pentoo-ssh.conf
+echo "LogLevel VERBOSE" >> /etc/ssh/sshd_config.d/ig-pentoo-ssh.conf
+echo "ClientAliveCountMax 2" >> /etc/ssh/sshd_config.d/ig-pentoo-ssh.conf
+echo "MaxAuthTries 3" >> /etc/ssh/sshd_config.d/ig-pentoo-ssh.conf
+echo "MaxSessions 2" >> /etc/ssh/sshd_config.d/ig-pentoo-ssh.conf
+echo "TCPKeepAlive NO" >> /etc/ssh/sshd_config.d/ig-pentoo-ssh.conf
+echo "AllowAgentForwarding NO" >> /etc/ssh/sshd_config.d/ig-pentoo-ssh.conf
+
+
 /etc/init.d/sshd restart
 #for normal non-full pentoo
 #daemons to configure
