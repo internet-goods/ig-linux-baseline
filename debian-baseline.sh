@@ -11,7 +11,10 @@ debian-pam-common-password.sh
 debian-profile.sh
 #debian-rsyslog.conf.sh
 debian-sysctl.conf.sh
-debian-sysstat.sh
+apt -y install sysstat
+systemctl enable sysstat
+sed -i 's/false/true/g' /etc/default/sysstat
+
 update-rc.d acct enable
 update-rc.d ssh enable
 service ssh start
