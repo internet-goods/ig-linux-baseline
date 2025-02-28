@@ -4,7 +4,7 @@ debian-baseline.sh
 debian-cron.sh
 debian-iptables.sh
 debian-limits.sh
-debian-login.defs.sh
+
 debian-modprobe.sh
 mount -o remount,hidepid=2 /proc
 debian-pam-common-password.sh
@@ -98,3 +98,8 @@ echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] 
 
 # 3. Update your package database and install signal
 sudo apt update && sudo apt install signal-desktop
+
+sed -i 's/22/27/g' /etc/login.defs
+echo "SHA_CRYPT_MIN_ROUNDS 800000" >> /etc/login.defs
+echo "SHA_CRYPT_MAX_ROUNDS 900000" >> /etc/login.defs
+echo "PASS_MIN_DAYS 1" >> /etc/login.defs
