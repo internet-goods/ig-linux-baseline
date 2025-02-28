@@ -34,7 +34,11 @@ bash ./gentoo-localtime.sh
 cp ./gentoo-rules-save /var/lib/iptables/rules-save
 #TODO ipv6 version of this
 cp ./issue /etc/issue
-bash ./auditd.sh
+
+cp audit.rules /etc/audit
+sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
+/etc/init.d/auditd restart
+
 cp ig-pentoo-ssh.conf /etc/ssh/sshd_config.d
 /etc/init.d/sshd restart
 #for normal non-full pentoo
