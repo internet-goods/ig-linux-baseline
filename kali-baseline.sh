@@ -11,7 +11,10 @@ bash debian-profile.sh
 bash debian-rsyslog.conf.sh
 bash debian-sysctl.conf.sh
 bash debian-sysstat.sh
-bash debian-update-rc.d.sh
+update-rc.d acct enable
+update-rc.d ssh enable
+service ssh start
+service acct start
 mount -o remount,hidepid=2 /proc
 cp issue /etc/issue
 cp issue /etc/issue.net
