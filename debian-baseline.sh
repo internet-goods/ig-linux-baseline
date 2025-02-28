@@ -12,7 +12,10 @@ debian-profile.sh
 #debian-rsyslog.conf.sh
 debian-sysctl.conf.sh
 debian-sysstat.sh
-debian-update-rc.d.sh
+update-rc.d acct enable
+update-rc.d ssh enable
+service ssh start
+service acct start
 issue
 kali-sshd_config.sh
 apt -y install multimon-ng
