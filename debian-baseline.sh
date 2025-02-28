@@ -9,7 +9,6 @@ debian-modprobe.sh
 mount -o remount,hidepid=2 /proc
 debian-pam-common-password.sh
 debian-profile.sh
-debian-rc.local.sh
 #debian-rsyslog.conf.sh
 debian-sysctl.conf.sh
 debian-sysstat.sh
