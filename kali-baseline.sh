@@ -4,7 +4,6 @@ bash debian-baseline.sh
 bash debian-cron.sh
 bash debian-iptables.sh
 bash limits.sh
-bash debian-login.defs.sh
 bash debian-modprobe.sh
 bash debian-mount.sh
 bash debian-pam-common-password.sh
@@ -31,3 +30,8 @@ apt -y autoremove
 #purge to pass lynis
 dpkg --get-selections | awk '$2=="deinstall" {system("sudo apt-get -y purge "$1)}'
 lynis audit system
+
+sed -i 's/22/27/g' /etc/login.defs
+echo "SHA_CRYPT_MIN_ROUNDS 800000" >> /etc/login.defs
+echo "SHA_CRYPT_MAX_ROUNDS 900000" >> /etc/login.defs
+echo "PASS_MIN_DAYS 1" >> /etc/login.defs
