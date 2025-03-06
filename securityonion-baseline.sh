@@ -140,3 +140,4 @@ sed -i "s/#plugins=keyfile,ifcfg-rh/plugins=keyfile/g" /etc/NetworkManager/Netwo
 echo "[keyfile]" >> /etc/NetworkMAnager/NetworkManager.conf
 echo "unmanaged-devices=type:wifi" >> /etc/NetworkMAnager/NetworkManager.conf
 service NetworkManager restart
+docker run -d --rm -p 2501:2501 -it --privileged --net=host --pid=host finchsec/kismet
