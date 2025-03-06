@@ -76,11 +76,11 @@ systemctl start sendmail
 #sudo docker compose up -d
 
 #so tuning for 32g machine
-sed -i 's/812m/2048m/g' /opt/so/saltstack/default/salt/redis/defaults.yaml
+#sed -i 's/812m/2048m/g' /opt/so/saltstack/default/salt/redis/defaults.yaml
 #elasticsearch
-sed -i 's/10753m/14336/g' /opt/so/saltstack/local/pilar/minions/securityonion_standalone.sls
+#sed -i 's/10753m/14336/g' /opt/so/saltstack/local/pilar/minions/securityonion_standalone.sls
 #logstash
-sed -i 's/1000m/4000m/g' /opt/so/saltstack/local/pilar/minions/securityonion_standalone.sls 
+#sed -i 's/1000m/4000m/g' /opt/so/saltstack/local/pilar/minions/securityonion_standalone.sls 
 #2 cores
 #sed -i "s/lb_procs: '1'/lb_procs: '2'/g" /opt/so/saltstack/local/pillar/minions/security_onion_standalone.sls
 #sed -i "s/threads: '1'/threads: '2'/g" /opt/so/saltstack/local/pillar/minions/security_onion_standalone.sls
@@ -133,3 +133,10 @@ lynis audit system
 #aide --init
 #cp /var/lib/aide.db.new.gz /var/lib/aide.db.gz
 # update-grub 
+
+#disable networkmanagement of wifi for kismet
+#plugins=keyfile,ifcfg-rh
+sed -i "s/#plugins=keyfile,ifcfg-rh/plugins=keyfile/g" /etc/NetworkManager/NetworkManager.conf
+echo "[keyfile]" >> /etc/NetworkMAnager/NetworkManager.conf
+echo "unmanaged-devices=type:wifi" >> /etc/NetworkMAnager/NetworkManager.conf
+service NetworkManager restart
