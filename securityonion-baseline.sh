@@ -11,7 +11,7 @@ yes|sensors-detect
 sensors
 systemctl enable smartd
 systemctl start smartd
-systemctl enable mcelog
+systemctl enable mcelog/dizcza/docker-hashcat/tree/master
 systemctl start mcelog
 
 #stuff that uses more cpu maybe dont turn on since SO is unstable
@@ -110,7 +110,7 @@ echo "[keyfile]" >> /etc/NetworkMAnager/NetworkManager.conf
 echo "unmanaged-devices=type:wifi" >> /etc/NetworkMAnager/NetworkManager.conf
 service NetworkManager restart
 docker run -d --rm -p 2501:2501 -it --privileged --net=host --pid=host finchsec/kismet
-
+/dizcza/docker-hashcat/tree/master
 #audit compliance
 oscap info /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml 
 mkdir $(date -I)
@@ -135,3 +135,8 @@ lynis audit system
 git clone https://github.com/docker/docker-bench-security
 cd docker-bench-security
 sh ./docker-bench-security.sh -l docker-bench-security-$(date -I).log
+
+curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo > /etc/yum.repos.d/nvidia-container-toolkit.repo
+dnf install -y nvidia-container-toolkit
+nvidia-ctk runtime configure --runtime=docker
+#then restart docker
