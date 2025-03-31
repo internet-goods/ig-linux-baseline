@@ -1,5 +1,6 @@
 chmod +x /etc/rc.d/rc.local
 echo "iptables -I INPUT -i bond0 -d 255.255.255.255 -s 0.0.0.0 -p udp --dport 67 --sport 68 -j DROP" >> /etc/rc.d/rc.local
+timedatectl set-timezone America/Chicago
 dnf -y install epel-release
 #monitoring
 dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog psacct usbutils iftop
