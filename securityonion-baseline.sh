@@ -1,6 +1,6 @@
 chmod +x /etc/rc.d/rc.local
 echo "iptables -I INPUT -i bond0 -d 255.255.255.255 -s 0.0.0.0 -p udp --dport 67 --sport 68 -j DROP" >> /etc/rc.d/rc.local
-timedatectl set-timezone America/Chicago
+
 dnf -y install epel-release
 #monitoring
 dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog psacct usbutils iftop
@@ -137,7 +137,10 @@ git clone https://github.com/docker/docker-bench-security
 cd docker-bench-security
 sh ./docker-bench-security.sh -l docker-bench-security-$(date -I).log
 
-curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo > /etc/yum.repos.d/nvidia-container-toolkit.repo
-dnf install -y nvidia-container-toolkit
+#curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo > /etc/yum.repos.d/nvidia-container-toolkit.repo
+#dnf install -y nvidia-container-toolkit
 nvidia-ctk runtime configure --runtime=docker
 #then restart docker
+
+#changes to SALT config files
+sed -i 's/Etc\/UTC/America\/Chicago/g' /opt/so/saltstack/default/salt/common/init.sls
