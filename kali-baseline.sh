@@ -61,6 +61,9 @@ apt-get -y install btscanner
 apt-get -y install eaphammer
 apt-get -y install python2-dev libpcap-dev
 apt-get -y install hostapd hostapd-wpe
+apt-get -y install python3-launchpadlib
+apt-add-repository -y ppa:team-xbmc/ppa
+apt -y install kodi
 apt -y autoremove 
 
 #purge to pass lynis
