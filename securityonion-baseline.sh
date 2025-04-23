@@ -70,11 +70,7 @@ systemctl start sendmail
 #dnf -y install aide
 
 
-#mkdir misp-docker
-#cp misp-so-docker-compose.yml misp-docker/docker-compose.yml
-#cp misp-env misp-docker/.env
-#cd misp-docker
-#sudo docker compose up -d
+
 
 #so tuning for 32g machine
 #sed -i 's/812m/2048m/g' /opt/so/saltstack/default/salt/redis/defaults.yaml
@@ -110,8 +106,7 @@ sed -i "s/#plugins=keyfile,ifcfg-rh/plugins=keyfile/g" /etc/NetworkManager/Netwo
 echo "[keyfile]" >> /etc/NetworkMAnager/NetworkManager.conf
 echo "unmanaged-devices=type:wifi" >> /etc/NetworkMAnager/NetworkManager.conf
 service NetworkManager restart
-docker run -d --rm -p 2501:2501 -it --privileged --net=host --pid=host finchsec/kismet
-/dizcza/docker-hashcat/tree/master
+
 #audit compliance
 oscap info /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml 
 mkdir $(date -I)
@@ -144,3 +139,15 @@ nvidia-ctk runtime configure --runtime=docker
 
 #changes to SALT config files
 sed -i 's/Etc\/UTC/America\/Chicago/g' /opt/so/saltstack/default/salt/common/init.sls
+#extra containers
+#mkdir misp-docker
+#cp misp-so-docker-compose.yml misp-docker/docker-compose.yml
+#cp misp-env misp-docker/.env
+#cd misp-docker
+#sudo docker compose up -d
+#docker run -d --rm -p 2501:2501 -it --privileged --net=sobridge --pid=host finchsec/kismet
+#
+#curl -f -O \
+#https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-community-edition.sh
+#bash setup-and-start-greenbone-community-edition.sh
+
