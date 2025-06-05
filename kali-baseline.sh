@@ -107,3 +107,6 @@ chmod 600 /etc/cron.deny
 #https://www.kali.org/docs/general-use/install-nvidia-drivers-on-kali-linux/
 apt install -y linux-headers-amd64
 apt install -y nvidia-driver nvidia-cuda-toolkit
+dpkg --add-architecture i386
+apt update
+apt install steam-installer
