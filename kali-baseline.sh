@@ -114,3 +114,4 @@ apt-get upgrade steam -f
 apt -y install nvidia-driver-libs:i386
 
 apt -y install htcondor
+apt -y install inxi
