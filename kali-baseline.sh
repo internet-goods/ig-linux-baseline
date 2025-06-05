@@ -3,7 +3,7 @@ cp audit.rules /etc/audit
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 /etc/init.d/auditd restart
 
-bash debian-baseline.sh
+#bash debian-baseline.sh
 bash debian-cron.sh
 bash debian-iptables.sh
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
