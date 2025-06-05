@@ -104,3 +104,6 @@ chmod 700 /etc/cron.hourly
 chmod 700 /etc/cron.weekly
 chmod 700 /etc/cron.monthly
 chmod 600 /etc/cron.deny
+#https://www.kali.org/docs/general-use/install-nvidia-drivers-on-kali-linux/
+apt install -y linux-headers-amd64
+apt install -y nvidia-driver nvidia-cuda-toolkit
