@@ -107,8 +107,8 @@ bash cron.sh
 #disable networkmanagement of wifi for kismet
 #plugins=keyfile,ifcfg-rh
 sed -i "s/#plugins=keyfile,ifcfg-rh/plugins=keyfile/g" /etc/NetworkManager/NetworkManager.conf
-echo "[keyfile]" >> /etc/NetworkMAnager/NetworkManager.conf
-echo "unmanaged-devices=type:wifi" >> /etc/NetworkMAnager/NetworkManager.conf
+echo "[keyfile]" >> /etc/NetworkManager/NetworkManager.conf
+echo "unmanaged-devices=type:wifi" >> /etc/NetworkManager/NetworkManager.conf
 service NetworkManager restart
 
 #audit compliance
