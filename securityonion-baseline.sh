@@ -47,7 +47,7 @@ echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/securityonion-baseline.
 echo "X11Forwarding no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 #limits
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
-echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
+echo "* soft core 0" >> /etc/security/limits.d/ig-baseline.conf
 
 #sysctl hardening
 echo "dev.tty.ldisc.autoload = 0" > /etc/sysctl.d/securityonion-baseline.conf
