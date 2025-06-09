@@ -45,8 +45,10 @@ echo "TCPKeepAlive no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 #echo "Port 220" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
 echo "X11Forwarding no" >> /etc/ssh/sshd_config.d/securityonion-baseline.conf
-#disable core dumps with limits
-bash limits.sh
+#limits
+echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
+echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
+
 #sysctl hardening
 echo "dev.tty.ldisc.autoload = 0" > /etc/sysctl.d/securityonion-baseline.conf
 echo "fs.protected_fifos = 2" >> /etc/sysctl.d/securityonion-baseline.conf
