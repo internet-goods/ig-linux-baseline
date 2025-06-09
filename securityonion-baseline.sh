@@ -1,6 +1,5 @@
 chmod +x /etc/rc.d/rc.local
 echo "iptables -I INPUT -i bond0 -d 255.255.255.255 -s 0.0.0.0 -p udp --dport 67 --sport 68 -j DROP" >> /etc/rc.d/rc.local
-
 dnf -y install epel-release 
 dnf -y install lsb-release
 #monitoring
@@ -8,14 +7,12 @@ dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog p
 dnf -y install bluez rtl-sdr hcxtools
 systemctl enable bluetooth
 systemctl start bluetooth
-
 yes|sensors-detect
 sensors
 systemctl enable smartd
 systemctl start smartd
 systemctl enable mcelog/dizcza/docker-hashcat/tree/master
 systemctl start mcelog
-
 #stuff that uses more cpu maybe dont turn on since SO is unstable
 systemctl enable psacct
 systemctl start psacct
@@ -70,7 +67,6 @@ systemctl start sendmail
 #rkhunter --update
 #dnf -y install clamav clamav-freshclam clamd
 #freshclam
-#dnf -y install aide
 
 
 
@@ -90,16 +86,19 @@ so-firewall includehost beats_endpoint_ssl 192.168.0.0/16
 so-firewall includehost elastic_agent_endpoint 192.168.0.0/16
 #so-firewall-minion --role=SENSOR --ip=
 #harden cron to pass lynis
-bash cron.sh
-
+chmod 600 /etc/crontab
+chmod 700 /etc/cron.d
+chmod 700 /etc/cron.daily
+chmod 700 /etc/cron.hourly
+chmod 700 /etc/cron.weekly
+chmod 700 /etc/cron.monthly
+chmod 600 /etc/cron.deny
 #sometimes you gotta dev in prod
-#dnf -y install make m4
-
-
+dnf -y install make m4
 #systemctl list-unit-files --state=enabled
 
 
-
+#dnf -y install aide
 #aide --init
 #cp /var/lib/aide.db.new.gz /var/lib/aide.db.gz
 # update-grub 
