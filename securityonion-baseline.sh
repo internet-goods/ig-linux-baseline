@@ -5,7 +5,7 @@ dnf -y install epel-release
 dnf -y install lsb-release
 #monitoring
 dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog psacct usbutils iftop
-dnf -y install bluez rtl-sdr
+dnf -y install bluez rtl-sdr hcxtools
 systemctl enable bluetooth
 systemctl start bluetooth
 
