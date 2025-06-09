@@ -137,7 +137,7 @@ sh ./docker-bench-security.sh -l docker-bench-security-$(date -I).log
 
 #curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo > /etc/yum.repos.d/nvidia-container-toolkit.repo
 #dnf install -y nvidia-container-toolkit
-nvidia-ctk runtime configure --runtime=docker
+#nvidia-ctk runtime configure --runtime=docker
 #then restart docker
 
 #changes to SALT config files
