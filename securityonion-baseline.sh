@@ -153,4 +153,14 @@ sed -i 's/Etc\/UTC/America\/Chicago/g' /opt/so/saltstack/default/salt/common/ini
 #curl -f -O \
 #https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-community-edition.sh
 #bash setup-and-start-greenbone-community-edition.sh
+#try to stop systemd running out of memory https://bugzilla.redhat.com/show_bug.cgi?id=1437114
+echo "[Journal]" > /etc/systemd/journald.conf
+echo Storage=volatile >> /etc/systemd/journald.conf
+echo SystemMaxUse=8M >> /etc/systemd/journald.conf
+echo SystemMaxFileSize=100K >> /etc/systemd/journald.conf
+echo RuntimeMaxUse=3M >> /etc/systemd/journald.conf
+echo RuntimeMaxFileSize=100K >> /etc/systemd/journald.conf
+echo Audit=no >> /etc/systemd/journald.conf
 
+
+/etc/systemd/journald.conf
