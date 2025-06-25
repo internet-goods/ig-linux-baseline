@@ -131,3 +131,6 @@ echo \
 sudo apt update
 apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
+curl -L https://meltdown.ovh -o spectre-meltdown-checker.sh
+chmod +x spectre-meltdown-checker.sh
+./spectre-meltdown-checker.sh
