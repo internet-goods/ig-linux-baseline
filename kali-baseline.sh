@@ -132,3 +132,4 @@ sudo apt update
 apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 apt-get -y install yubikey-manager-qt
+apt-get --purge remove thunderbird
