@@ -64,8 +64,10 @@ apt-get -y install hostapd hostapd-wpe
 apt-get -y install python3-launchpadlib
 apt-get -y install libreoffice-writer
 apt-get -y install libreoffice-calc
-apt-add-repository -y ppa:team-xbmc/ppa
-apt -y install kodi
+#apt-add-repository -y ppa:team-xbmc/ppa
+#apt -y install kodi
+apt-get -y install yubikey-manager-qt
+apt-get -y install keepassxc-full
 apt -y autoremove 
 
 #purge to pass lynis
@@ -131,5 +133,4 @@ echo \
 sudo apt update
 apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-apt-get -y install yubikey-manager-qt
-apt-get --purge remove thunderbird
+
