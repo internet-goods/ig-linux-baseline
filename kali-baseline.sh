@@ -68,6 +68,8 @@ apt-get -y install libreoffice-calc
 #apt -y install kodi
 apt-get -y install yubikey-manager-qt
 apt-get -y install keepassxc-full
+apt-get -y install neowofetch
+
 apt -y autoremove 
 
 #purge to pass lynis
