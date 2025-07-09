@@ -134,5 +134,6 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
+#userapp settings
+echo "set mouse=a" >> /etc/vim/vimrc
 
