@@ -69,9 +69,19 @@ apt-get -y install libreoffice-calc
 apt-get -y install yubikey-manager-qt
 apt-get -y install keepassxc-full
 apt-get -y install neowofetch
-
+apt -y install inxi
+apt -y install python3-selenium
+apt -y install python3-bs4
+apt -y install python3-pandas
+apt -y install python3-pyautogui
+apt -y install python3-lxml
+#no python-future?
+apt -y install python3-futurist
+apt -y install python3-packaging
+apt -y install python3-bs4
+apt -y install python3-dotenv
+apt -y install 
 apt -y autoremove 
-
 #purge to pass lynis
 dpkg --get-selections | awk '$2=="deinstall" {system("sudo apt-get -y purge "$1)}'
 lynis audit system
@@ -120,7 +130,7 @@ apt-get upgrade steam -f
 apt -y install nvidia-driver-libs:i386
 
 apt -y install htcondor
-apt -y install inxi
+
 #apt -y install docker.io docker-doc docker-compose containerd
 #systemctl enable docker
 #systemctl start docker
