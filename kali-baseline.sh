@@ -81,6 +81,7 @@ apt -y install python3-packaging
 apt -y install python3-bs4
 apt -y install python3-dotenv
 apt -y install python3-pyautogui
+apt -y install maltego
 apt -y install 
 apt -y autoremove 
 #purge to pass lynis
