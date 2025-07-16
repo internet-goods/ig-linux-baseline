@@ -64,8 +64,6 @@ apt-get -y install hostapd hostapd-wpe
 apt-get -y install python3-launchpadlib
 apt-get -y install libreoffice-writer
 apt-get -y install libreoffice-calc
-#apt-add-repository -y ppa:team-xbmc/ppa
-#apt -y install kodi
 apt-get -y install yubikey-manager-qt
 apt-get -y install keepassxc-full
 apt-get -y install neowofetch
@@ -82,6 +80,14 @@ apt -y install python3-bs4
 apt -y install python3-dotenv
 apt -y install python3-pyautogui
 apt -y install maltego
+#media apps
+apt -y install supercollider
+apt -y install mpv
+apt -y install vlc
+apt -y install smplayer
+#apt-add-repository -y ppa:team-xbmc/ppa
+#apt -y install kodi
+
 apt -y install 
 apt -y autoremove 
 #purge to pass lynis
@@ -150,7 +156,7 @@ apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 echo "set mouse=a" >> /etc/vim/vimrc
 
 #AI OVERLORDS GO!
-echo ACTIVATE AI1 LLM
+echo AI1 LLM
 apt -y install llm
 python3 -m venv myllm_env
 cd myllm_env 
@@ -160,8 +166,9 @@ python3 -m pip install --upgrade gpt4all typer
 # 
 wget https://raw.githubusercontent.com/nomic-ai/gpt4all/main/gpt4all-bindings/cli/app.py
 python3 app.py repl
-echo ACTIVATE AI2 OLLAMA
+echo AI2 OLLAMA
 curl https://ollama.ai/install.sh | sh
 ollama pull llama3
 ollama run llama3 "Say 'Hello, world!'"
-#AI3
+echo AI3 WEKA
+#pdsh -R ssh -w "weka0-[0-7]" "curl https://[GET.WEKA.IO-TOKEN]@get.weka.io/dist/v1/install/4.0.5.14/4.0.5.14 | sh
