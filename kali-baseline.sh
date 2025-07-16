@@ -67,6 +67,7 @@ apt-get -y install libreoffice-calc
 apt-get -y install yubikey-manager-qt
 apt-get -y install keepassxc-full
 apt-get -y install neowofetch
+
 apt -y install inxi
 apt -y install python3-selenium
 apt -y install python3-bs4
@@ -79,6 +80,7 @@ apt -y install python3-packaging
 apt -y install python3-bs4
 apt -y install python3-dotenv
 apt -y install python3-pyautogui
+apt -y install python3-sklearn
 apt -y install maltego
 #media apps
 apt -y install supercollider
