@@ -148,4 +148,10 @@ sudo apt update
 apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 #userapp settings
 echo "set mouse=a" >> /etc/vim/vimrc
-
+echo ACTIVATE AI1 LLM
+apt -y install llm
+llm install llm-gpt4all
+echo ACTIVATE AI2 OLLAMA
+curl https://ollama.ai/install.sh | sh
+ollama pull llama3
+ollama run llama3 "Say 'Hello, world!'"
