@@ -76,6 +76,9 @@ echo "kernel.yama.ptrace_scope=3" >> /etc/sysctl.d/securityonion-baseline.conf
 #2 cores
 #sed -i "s/lb_procs: '1'/lb_procs: '2'/g" /opt/so/saltstack/local/pillar/minions/security_onion_standalone.sls
 #sed -i "s/threads: '1'/threads: '2'/g" /opt/so/saltstack/local/pillar/minions/security_onion_standalone.sls
+#disable steno until we stop running out of ram
+echo "  steno:" >> /opt/so/saltstack/local/pillar/global/soc_global.sls
+echo "    enabled: false" >> /opt/so/saltstack/local/pillar/global/soc_global.sls
 so-firewall includehost syslog 192.168.0.0/16
 so-firewall includehost fleet 192.168.0.0/16
 so-firewall includehost beats_endpoint_ssl 192.168.0.0/16
