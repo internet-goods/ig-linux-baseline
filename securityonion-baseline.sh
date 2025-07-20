@@ -5,23 +5,32 @@ dnf -y install lsb-release
 #monitoring
 dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog psacct usbutils iftop inxi
 dnf -y install bluez rtl-sdr hcxtools
+dnf -y install lynis openscap openscap-utils scap-security-guide
+
 systemctl enable bluetooth
 systemctl start bluetooth
 yes|sensors-detect
 sensors
 systemctl enable smartd
 systemctl start smartd
-systemctl enable mcelog/dizcza/docker-hashcat/tree/master
+systemctl enable mcelog
 systemctl start mcelog
 #stuff that uses more cpu maybe dont turn on since SO is unstable
 systemctl enable psacct
 systemctl start psacct
 #client apps
-dnf -y install screen alpine lynx ccze 
+dnf -y install screen alpine lynx ccze
+#dev
+dnf -y install python3-pip
+dnf -y install npm 
+npm install elasticdump
+
+dnf -y install make m4
+dnf -y install sendmail
+systemctl enable sendmail
+systemctl start sendmail
 #mlocate
 #hardening
-dnf -y install lynis openscap openscap-utils scap-security-guide
-#disable modules
 echo "install dccp /bin/true" >> /etc/modprobe.d/securityonion-baseline.conf
 echo "install sctp /bin/true" >> /etc/modprobe.d/securityonion-baseline.conf
 echo "install rds /bin/true" >> /etc/modprobe.d/securityonion-baseline.conf
@@ -54,22 +63,9 @@ echo "fs.protected_regular = 2" >> /etc/sysctl.d/securityonion-baseline.conf
 echo "fs.suid_dumpable = 0" >> /etc/sysctl.d/securityonion-baseline.conf
 echo "kernel.dmesg_restrict = 1" >> /etc/sysctl.d/securityonion-baseline.conf
 echo "kernel.kptr_restrict = 1" >> /etc/sysctl.d/securityonion-baseline.conf
-
 echo "kernel.perf_event_paranoid = 3" >> /etc/sysctl.d/securityonion-baseline.conf
 echo "kernel.sysrq = 0" >> /etc/sysctl.d/securityonion-baseline.conf
 echo "kernel.yama.ptrace_scope=3" >> /etc/sysctl.d/securityonion-baseline.conf
-
-#timedatectl set-timezone America/Chicago
-dnf -y install sendmail
-systemctl enable sendmail
-systemctl start sendmail
-#dnf -y install rkhunter
-#rkhunter --update
-#dnf -y install clamav clamav-freshclam clamd
-#freshclam
-
-
-
 
 #so tuning for 32g machine
 #sed -i 's/812m/2048m/g' /opt/so/saltstack/default/salt/redis/defaults.yaml
@@ -93,15 +89,6 @@ chmod 700 /etc/cron.hourly
 chmod 700 /etc/cron.weekly
 chmod 700 /etc/cron.monthly
 chmod 600 /etc/cron.deny
-#sometimes you gotta dev in prod
-dnf -y install make m4
-#systemctl list-unit-files --state=enabled
-
-
-#dnf -y install aide
-#aide --init
-#cp /var/lib/aide.db.new.gz /var/lib/aide.db.gz
-# update-grub 
 
 #disable networkmanagement of wifi for kismet
 #plugins=keyfile,ifcfg-rh
@@ -129,11 +116,6 @@ oscap xccdf eval --fetch-remote-resources \
 --report xccdf_org.ssgproject.content_profile_standard.html \
 /usr/share/xml/scap/ssg/content/ssg-ol9-ds.xml
 
-lynis audit system
-
-git clone https://github.com/docker/docker-bench-security
-cd docker-bench-security
-sh ./docker-bench-security.sh -l docker-bench-security-$(date -I).log
 
 #curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo > /etc/yum.repos.d/nvidia-container-toolkit.repo
 #dnf install -y nvidia-container-toolkit
@@ -143,17 +125,7 @@ sh ./docker-bench-security.sh -l docker-bench-security-$(date -I).log
 #changes to SALT config files
 sed -i 's/Etc\/UTC/America\/Chicago/g' /opt/so/saltstack/default/salt/common/init.sls
 #extra containers
-#mkdir misp-docker
-#cp misp-so-docker-compose.yml misp-docker/docker-compose.yml
-#cp misp-env misp-docker/.env
-#cd misp-docker
-#sudo docker compose up -d
 #docker run -d --rm -p 2501:2501 -it --privileged --net=sobridge --pid=host finchsec/kismet
-#
-#curl -f -O \
-#https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-community-edition.sh
-#bash setup-and-start-greenbone-community-edition.sh
-
 
 #try to stop systemd running out of memory https://bugzilla.redhat.com/show_bug.cgi?id=1437114
 echo "[Journal]" > /etc/systemd/journald.conf
@@ -167,5 +139,5 @@ sed -i  's/#Storage=external/Storage=none/g' coredump.conf
 systemctl stop kdump.service
 systemctl disable kdump.service
 #https://stackoverflow.com/questions/15936616/import-index-a-json-file-into-elasticsearch
-git clone https://github.com/elasticsearch-dump/elasticsearch-dump
-pip install elasticsearch-loader
+#git clone https://github.com/elasticsearch-dump/elasticsearch-dump
+
