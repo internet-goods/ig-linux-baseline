@@ -122,7 +122,7 @@ echo "install tipc /bin/true" >> /etc/modprobe.d/debian-baseline.conf
 echo "install firewire-ohci /bin/true" >>  /etc/modprobe.d/debian-baseline.conf
 echo "install firewire-sbp2 /bin/true" >>  /etc/modprobe.d/debian-baseline.conf
 echo "install usb-storage /bin/true" >> /etc/modprobe.d/debian-baseline.conf
-
+llm install claude
 echo umask 022 > /etc/profile.d/debian-baseline.sh
 
 chmod 600 /etc/crontab
@@ -170,6 +170,8 @@ echo "set mouse=a" >> /etc/vim/vimrc
 #AI OVERLORDS GO!
 echo AI1 LLM
 apt -y install llm
+llm install claude
+llm install llm-gpt4all
 python3 -m venv myllm_env
 cd myllm_env 
 source bin/activate  
