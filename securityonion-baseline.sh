@@ -4,11 +4,11 @@ dnf -y install epel-release
 dnf -y install lsb-release
 #monitoring
 dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog psacct usbutils iftop inxi
-dnf -y install bluez rtl-sdr hcxtools
+#dnf -y install bluez rtl-sdr hcxtools
 dnf -y install lynis openscap openscap-utils scap-security-guide
 
-systemctl enable bluetooth
-systemctl start bluetooth
+#systemctl enable bluetooth
+#systemctl start bluetooth
 yes|sensors-detect
 sensors
 systemctl enable smartd
@@ -16,8 +16,8 @@ systemctl start smartd
 systemctl enable mcelog
 systemctl start mcelog
 #stuff that uses more cpu maybe dont turn on since SO is unstable
-systemctl enable psacct
-systemctl start psacct
+#systemctl enable psacct
+#systemctl start psacct
 #client apps
 dnf -y install screen alpine lynx ccze
 #dev
