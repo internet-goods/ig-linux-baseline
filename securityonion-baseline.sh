@@ -80,6 +80,7 @@ so-firewall includehost syslog 192.168.0.0/16
 so-firewall includehost fleet 192.168.0.0/16
 so-firewall includehost beats_endpoint_ssl 192.168.0.0/16
 so-firewall includehost elastic_agent_endpoint 192.168.0.0/16
+so-elasticsearch-query _cluster/settings -d '{"persistent":{"ingest.geoip.downloader.enabled":true}}' -XPUT
 #so-firewall-minion --role=SENSOR --ip=
 #harden cron to pass lynis
 chmod 600 /etc/crontab
