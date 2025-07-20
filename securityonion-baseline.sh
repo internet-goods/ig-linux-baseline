@@ -166,5 +166,6 @@ echo Audit=no >> /etc/systemd/journald.conf
 sed -i  's/#Storage=external/Storage=none/g' coredump.conf
 systemctl stop kdump.service
 systemctl disable kdump.service
-
+#https://stackoverflow.com/questions/15936616/import-index-a-json-file-into-elasticsearch
 git clone https://github.com/elasticsearch-dump/elasticsearch-dump
+pip install elasticsearch-loader
