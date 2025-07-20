@@ -87,6 +87,8 @@ apt -y install supercollider
 apt -y install mpv
 apt -y install vlc
 apt -y install smplayer
+apt -y install npm
+npm install elasticdump
 #apt-add-repository -y ppa:team-xbmc/ppa
 #apt -y install kodi
 
