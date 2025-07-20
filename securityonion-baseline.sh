@@ -166,3 +166,5 @@ echo Audit=no >> /etc/systemd/journald.conf
 sed -i  's/#Storage=external/Storage=none/g' coredump.conf
 systemctl stop kdump.service
 systemctl disable kdump.service
+
+git clone https://github.com/elasticsearch-dump/elasticsearch-dump
