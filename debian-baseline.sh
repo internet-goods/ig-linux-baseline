@@ -63,7 +63,7 @@ apt -y install libprotobuf-c-dev
 apt -y install libprotobuf-dev
 apt -y install libssl-dev
 apt -y install libsqlite3-dev
-apt -y install zoneminder
+apt -y install kismet
 apt -y install pdfgrep
 apt -y install v4l-utils
 apt -y install wavemon
