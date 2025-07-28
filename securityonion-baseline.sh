@@ -144,4 +144,6 @@ systemctl stop kdump.service
 systemctl disable kdump.service
 #https://stackoverflow.com/questions/15936616/import-index-a-json-file-into-elasticsearch
 #git clone https://github.com/elasticsearch-dump/elasticsearch-dump
-
+#tune down MTU for suricata
+cd /etc/NetworkManager/system-connections
+find . -type f -exec sed -i 's/9000/4088/g' {} +
