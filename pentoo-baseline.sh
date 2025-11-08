@@ -162,3 +162,4 @@ emerge app-emulation/libvirt
 emerge app-emulation/virt-manager
 emerge app-emulation/virtualbox
 cp /usr/share/zoneinfo/America/Chicago /etc/localtime
+echo "options cfg80211 ieee80211_regdom=US" >/etc/conf.d/wireless-regdom
