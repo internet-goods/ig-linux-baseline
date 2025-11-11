@@ -3,7 +3,6 @@ cp audit.rules /etc/audit
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 /etc/init.d/auditd restart
 
-#bash debian-baseline.sh
 bash debian-cron.sh
 bash debian-iptables.sh
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
@@ -133,38 +132,26 @@ chmod 700 /etc/cron.hourly
 chmod 700 /etc/cron.weekly
 chmod 700 /etc/cron.monthly
 chmod 600 /etc/cron.deny
-#https://www.kali.org/docs/general-use/install-nvidia-drivers-on-kali-linux/
-apt install -y linux-headers-amd64
-apt install -y nvidia-driver nvidia-cuda-toolkit
-dpkg --add-architecture i386
-apt update
-apt install steam-installer
-apt-get upgrade steam -f
-apt -y install nvidia-driver-libs:i386
 
-#https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
-curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
-  && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
-    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
-    tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
-
-apt install -y nvidia-container-toolkit
-
-apt -y install htcondor
-
+#curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+#  && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+#    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+#    tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+#apt install -y nvidia-container-toolkit
+#apt -y install htcondor
 #apt -y install docker.io docker-doc docker-compose containerd
 #systemctl enable docker
 #systemctl start docker
 #docker info
 #https://greenbone.github.io/docs/latest/22.4/container/index.html
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian bookworm stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+#sudo install -m 0755 -d /etc/apt/keyrings
+#curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+#sudo chmod a+r /etc/apt/keyrings/docker.gpg
+#echo \
+#  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian bookworm stable" | \
+#  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+#sudo apt update
+#apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 #userapp settings
 echo "set mouse=a" >> /etc/vim/vimrc
 
