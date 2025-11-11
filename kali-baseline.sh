@@ -96,7 +96,7 @@ apt -y install
 apt -y autoremove 
 #purge to pass lynis
 dpkg --get-selections | awk '$2=="deinstall" {system("sudo apt-get -y purge "$1)}'
-lynis audit system
+#lynis audit system
 
 sed -i 's/22/27/g' /etc/login.defs
 echo "SHA_CRYPT_MIN_ROUNDS 800000" >> /etc/login.defs
@@ -139,10 +139,10 @@ chmod 600 /etc/cron.deny
 #    tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 #apt install -y nvidia-container-toolkit
 #apt -y install htcondor
-#apt -y install docker.io docker-doc docker-compose containerd
-#systemctl enable docker
-#systemctl start docker
-#docker info
+apt -y install docker.io docker-doc docker-compose containerd
+systemctl enable docker
+systemctl start docker
+docker info
 #https://greenbone.github.io/docs/latest/22.4/container/index.html
 #sudo install -m 0755 -d /etc/apt/keyrings
 #curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
