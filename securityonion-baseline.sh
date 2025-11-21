@@ -147,3 +147,10 @@ systemctl disable kdump.service
 #tune down MTU for suricata
 cd /etc/NetworkManager/system-connections
 find . -type f -exec sed -i 's/9000/4088/g' {} +
+#install dnsmasq dns cache to cut down on excessive queries 
+dnf -y install dnsmasq
+echo cache-size=1000 >> /etc/dnsmasq.conf
+echo server=yourserver >> /etc/dnsmasq.conf
+systemctl enable dnsmasq.service
+systemctl start dnsmasq.service
+#echo nameserver 127.0.0.0 > /etc/resolv.conf
