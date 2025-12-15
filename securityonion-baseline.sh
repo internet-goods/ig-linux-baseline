@@ -128,8 +128,7 @@ oscap xccdf eval --fetch-remote-resources \
 
 #changes to SALT config files
 sed -i 's/Etc\/UTC/America\/Chicago/g' /opt/so/saltstack/default/salt/common/init.sls
-#extra containers
-#docker run -d --rm -p 2501:2501 -it --privileged --net=sobridge --pid=host finchsec/kismet
+
 
 #try to stop systemd running out of memory https://bugzilla.redhat.com/show_bug.cgi?id=1437114
 echo "[Journal]" > /etc/systemd/journald.conf
@@ -148,9 +147,13 @@ systemctl disable kdump.service
 cd /etc/NetworkManager/system-connections
 find . -type f -exec sed -i 's/9000/4088/g' {} +
 #install dnsmasq dns cache to cut down on excessive queries 
-dnf -y install dnsmasq
-echo cache-size=1000 >> /etc/dnsmasq.conf
-echo server=yourserver >> /etc/dnsmasq.conf
-systemctl enable dnsmasq.service
-systemctl start dnsmasq.service
+#dnf -y install dnsmasq
+#echo cache-size=1000 >> /etc/dnsmasq.conf
+#echo server=yourserver >> /etc/dnsmasq.conf
+#systemctl enable dnsmasq.service
+#systemctl start dnsmasq.service
 #echo nameserver 127.0.0.0 > /etc/resolv.conf
+#extra containers
+#docker run -d --rm -p 2501:2501 -it --privileged --net=sobridge --pid=host finchsec/kismet
+mkdir /nsm/pihole
+docker run -d --name ig-pihole -p 53:53/tcp -p 53:53/udp -p 81:80/tcp -p 444:443/tcp -e TZ="America/Chicago" -e WEBPASSWORD="IGPIHOLE" -e FTLCONF_dns_listeningMode="all" -v /nsm/pihole/etc-pihole:/etc/pihole -v /nsm/pihole/etc-dnsmasq.d:/etc/dnsmasq.d --restart unless-stopped pihole/pihole:latest
