@@ -146,17 +146,12 @@ systemctl disable kdump.service
 #tune down MTU for suricata
 cd /etc/NetworkManager/system-connections
 find . -type f -exec sed -i 's/9000/4088/g' {} +
-#install dnsmasq dns cache to cut down on excessive queries 
-#dnf -y install dnsmasq
-#echo cache-size=1000 >> /etc/dnsmasq.conf
-#echo server=yourserver >> /etc/dnsmasq.conf
-#systemctl enable dnsmasq.service
-#systemctl start dnsmasq.service
-#echo nameserver 127.0.0.0 > /etc/resolv.conf
-#extra containers
+mkdir /nsm/kismet
 #docker run -d --rm -p 2501:2501 -it --privileged --net=sobridge --pid=host finchsec/kismet
 mkdir /nsm/pihole
 docker run -d --name ig-pihole --network=sobridge -p 53:53/tcp -p 53:53/udp -p 81:80/tcp -p 444:443/tcp -e TZ="America/Chicago" -e WEBPASSWORD="IGPIHOLE" -e FTLCONF_dns_listeningMode="all" -v /nsm/pihole/etc-pihole:/etc/pihole -v /nsm/pihole/etc-dnsmasq.d:/etc/dnsmasq.d --restart unless-stopped pihole/pihole:latest
 mkdir /nsm/misp
 docker run -it --name ig-misp --network=sobridge --rm -v /nsm/misp:/var/lib/mysql harvarditsecurity/misp /init-db
 docker run -it -d --name ig-misp -p 446:443 -p 82:80 -p 3306:3306 -v /nsm/misp:/var/lib/mysql harvarditsecurity/misp
+mkdir /nsm/samba
+docker run -it --restart unless-stopped --name ig-samba -p 139:139/tcp -p 445:445/tcp -p 137:137/udp -p 138:138/udp -v /nsm/samba:/share -d dperson/samba -u "igsamba;password" -s "samba;/share;yes;no;yes;igsamba"
