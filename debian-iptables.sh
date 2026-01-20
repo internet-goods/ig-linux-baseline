@@ -68,6 +68,34 @@ curl -s http://www.ipdeny.com/ipblocks/data/countries/cu.zone | while read line;
 curl -s http://www.ipdeny.com/ipblocks/data/countries/ve.zone | while read line; do sudo ipset add venezuela $line; done
 iptables -I INPUT -m set --match-set china src -j DROP
 iptables -I INPUT -m set --match-set russia src -j DROP
+iptables -I INPUT -m set --match-set vietnam src -j DROP
+iptables -I INPUT -m set --match-set indo src -j DROP
+iptables -I INPUT -m set --match-set uae src -j DROP
+iptables -I INPUT -m set --match-set saudi src -j DROP
+iptables -I INPUT -m set --match-set ukraine src -j DROP
+iptables -I INPUT -m set --match-set belarus src -j DROP
+iptables -I INPUT -m set --match-set montenegro src -j DROP
+iptables -I INPUT -m set --match-set cambodia src -j DROP
+iptables -I INPUT -m set --match-set laos src -j DROP
+iptables -I INPUT -m set --match-set vanuatu src -j DROP
+iptables -I INPUT -m set --match-set samoa src -j DROP
+iptables -I INPUT -m set --match-set eritrea src -j DROP
+iptables -I INPUT -m set --match-set ethiopia src -j DROP
+iptables -I INPUT -m set --match-set cuba src -j DROP
+iptables -I INPUT -m set --match-set venezuela src -j DROP
+#gemini IPS
+sudo ipset create bad_ips hash:ip
+# Download and add (this requires 'curl')
+curl -s https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt | \
+grep -v "#" | while read ip; do 
+    sudo ipset add bad_ips $ip
+done
+# Apply to firewall
+iptables -I INPUT -m set --match-set bad_ips src -j DROP
+# Add anyone hitting Telnet (23) to the blacklist
+iptables -A INPUT -p tcp --dport 23 -j SET --add-set port_scanners src
+# Drop all traffic from anyone in the blacklist
+iptables -I INPUT -m set --match-set port_scanners src -j DROP
 
 iptables-save > /etc/iptables/rules.v4
 systemctl enable iptables
