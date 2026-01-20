@@ -39,7 +39,7 @@ iptables -I INPUT -p tcp --tcp-flags ACK,FIN FIN -j DROP
 iptables -I INPUT -s 224.0.0.0/4      -j DROP 
 iptables -I INPUT -d 224.0.0.0/4      -j DROP 
 #block outgoing multicast mDNS 
-intables -I OUTPUT -s 224.0.0.0/4   -j DROP
+iptables -I OUTPUT -s 224.0.0.0/4   -j DROP
 iptables -I OUTPUT -d 224.0.0.0/4   -j DROP
 iptables -I INPUT -s 240.0.0.0/5      -j DROP 
 iptables -I INPUT -d 240.0.0.0/5      -j DROP
