@@ -3,11 +3,17 @@ iptables -F
 iptables -P INPUT DROP
 iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
+#Default allows, lo,new,established only
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
+iptables -A OUTPUT -p tcp -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p udp -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p icmp -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT
+iptables -A INPUT -p udp -m state --state ESTABLISHED -j ACCEPT
+iptables -A INPUT -p icmp -m state --state ESTABLISHED -j ACCEPT
+#FILTER1 block bogons not on loopback
 iptables -N BOGONS
-
-# Bogon source networks
 iptables -A BOGONS -s 0.0.0.0/8 -j DROP
 iptables -A BOGONS -s 10.0.0.0/8 -j DROP
 iptables -A BOGONS -s 100.64.0.0/10 -j DROP
@@ -20,37 +26,32 @@ iptables -A BOGONS -s 192.0.2.0/24 -j DROP
 iptables -A BOGONS -s 198.18.0.0/15 -j DROP
 iptables -A BOGONS -s 198.51.100.0/24 -j DROP
 iptables -A BOGONS -s 203.0.113.0/24 -j DROP
+#block ALLmulticast mDNS 
 iptables -A BOGONS -s 224.0.0.0/4 -j DROP
+iptables -A BOGONS -d 239.0.0.0/8 -j DROP 
 iptables -A BOGONS -s 240.0.0.0/4 -j DROP
 iptables -A BOGONS -s 255.255.255.255/32 -j DROP
-
 # Apply to INPUT chain
-iptables -I INPUT 1 -j BOGONS
+iptables -A INPUT -j BOGONS
 
-
-iptables -A INPUT -s 127.0.0.0/8 -j DROP
-iptables -A OUTPUT -p tcp -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p udp -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A OUTPUT -p icmp -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT
-iptables -A INPUT -p udp -m state --state ESTABLISHED -j ACCEPT
-iptables -A INPUT -p icmp -m state --state ESTABLISHED -j ACCEPT
-iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
-iptables -A INPUT -p tcp --dport 25 -m state --state NEW -j ACCEPT
-iptables -I OUTPUT -m state --state INVALID -j DROP 
-iptables -I INPUT -m state --state INVALID -j DROP 
-iptables -I INPUT --fragment -j DROP 
-iptables -I INPUT -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
-iptables -I INPUT -p tcp --tcp-flags ALL SYN,FIN,PSH,URG -j DROP
-iptables -I INPUT -p tcp --tcp-flags ALL FIN,PSH,URG -j DROP
-iptables -I INPUT -p tcp --tcp-flags ALL NONE -j DROP
-iptables -I INPUT -p tcp --tcp-flags ALL ALL -j DROP
-iptables -I INPUT -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
-iptables -I INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
-iptables -I INPUT -p tcp --tcp-flags FIN,RST FIN,RST -j DROP
-iptables -I INPUT -p tcp --tcp-flags ACK,URG URG -j DROP
-iptables -I INPUT -p tcp --tcp-flags ACK,PSH PSH -j DROP
-iptables -I INPUT -p tcp --tcp-flags ACK,FIN FIN -j DROP
+#FILTER2 BEHAVIORAL
+#iptables -I OUTPUT -m state --state INVALID -j DROP 
+iptables -N BEHAVE 
+iptables -A BEHAVE -m state --state INVALID -j DROP 
+iptables -A BEHAVE --fragment -j DROP 
+iptables -A BEHAVE -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ALL SYN,FIN,PSH,URG -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ALL FIN,PSH,URG -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ALL NONE -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ALL ALL -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags FIN,RST FIN,RST -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ACK,URG URG -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ACK,PSH PSH -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ACK,FIN FIN -j DROP
+iptables -I INPUT -p tcp -m state --state NEW ! --syn -j DROP
+#iptables -I INPUT -p udp --destination-port 7 -j DROP
 #iptables -I INPUT -p udp -m limit --limit 3/s -j ACCEPT
 #iptables -I INPUT -p udp -m pkttype --pkt-type broadcast -j DROP
 #iptables -I INPUT -p tcp -m tcp --tcp-flags RST RST -m limit --limit 2/second --limit-burst 2 -j ACCEPT
@@ -58,18 +59,9 @@ iptables -I INPUT -p tcp --tcp-flags ACK,FIN FIN -j DROP
 #iptables -I INPUT -p icmp -m icmp --icmp-type timestamp-request -j DROP
 #iptables -I INPUT -p icmp -m icmp --icmp-type address-mask-request -j DROP
 #iptables -I INPUT -p tcp -m state --state NEW -m limit --limit 2/second --limit-burst 2 -j ACCEPT
-#block incoming multicast including mDNS
-iptables -I INPUT -s 224.0.0.0/4      -j DROP 
-iptables -I INPUT -d 224.0.0.0/4      -j DROP 
-#block outgoing multicast mDNS 
-iptables -I OUTPUT -s 224.0.0.0/4   -j DROP
-iptables -I OUTPUT -d 224.0.0.0/4   -j DROP
-iptables -I INPUT -s 240.0.0.0/5      -j DROP 
-iptables -I INPUT -d 240.0.0.0/5      -j DROP
-iptables -I INPUT -d 239.255.255.0/24 -j DROP 
-iptables -I INPUT -p tcp -m state --state NEW ! --syn -j DROP
-iptables -I INPUT -p udp --destination-port 7 -j DROP
-#gemini ipsets
+
+
+#ipsets
 #https://en.wikipedia.org/wiki/List_of_United_States_extradition_treaties
 #we are always at war with eurasia
 ipset flush
@@ -89,6 +81,7 @@ ipset create laos hash:net
 ipset create vanuatu hash:net
 ipset create samoa hash:net
 ipset create eritrea hash:net
+ipset create ethiopia hash:net
 ipset create cuba hash:net
 ipset create venezuela hash:net
 curl -s http://www.ipdeny.com/ipblocks/data/countries/cn.zone | while read line; do sudo ipset add china $line; done
@@ -133,11 +126,20 @@ grep -v "#" | while read ip; do
     sudo ipset add bad_ips $ip
 done
 # Apply to firewall
-iptables -I INPUT -m set --match-set bad_ips src -j DROP
+#iptables -I INPUT -m set --match-set bad_ips src -j DROP
 # Add anyone hitting Telnet (23) to the blacklist
 iptables -A INPUT -p tcp --dport 23 -j SET --add-set port_scanners src
 # Drop all traffic from anyone in the blacklist
 iptables -I INPUT -m set --match-set port_scanners src -j DROP
+#we made it!
+iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
+#iptables -A INPUT -p tcp --dport 25 -m state --state NEW -j ACCEPT
+iptables -A INPUT -p tcp --dport 25 -m state --state NEW -m hashlimit \
+--hashlimit-name SMTP_LIMIT \
+--hashlimit-upto 5/minute \
+--hashlimit-burst 10 \
+--hashlimit-mode srcip \
+-j ACCEPT
 
 iptables-save > /etc/iptables/rules.v4
 systemctl enable iptables
