@@ -8,7 +8,7 @@ echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
 debian-modprobe.sh
 mount -o remount,hidepid=2 /proc
 debian-pam-common-password.sh
-debian-profile.sh
+debian-profile.shinxi
 #debian-rsyslog.conf.sh
 debian-sysctl.conf.sh
 apt -y install sysstat
@@ -48,7 +48,7 @@ service sshd reload
 update-rc.d ssh enable
 service ssh start
 
-
+apt -y install apt-show-versions
 apt -y install multimon-ng
 apt -y install screen
 apt -y install libnl*
