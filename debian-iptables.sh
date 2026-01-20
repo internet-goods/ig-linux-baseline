@@ -5,6 +5,29 @@ iptables -P OUTPUT DROP
 iptables -P FORWARD DROP
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
+iptables -N BOGONS
+
+# Bogon source networks
+iptables -A BOGONS -s 0.0.0.0/8 -j DROP
+iptables -A BOGONS -s 10.0.0.0/8 -j DROP
+iptables -A BOGONS -s 100.64.0.0/10 -j DROP
+iptables -A BOGONS -s 127.0.0.0/8 -j DROP
+iptables -A BOGONS -s 169.254.0.0/16 -j DROP
+iptables -A BOGONS -s 172.16.0.0/12 -j DROP
+iptables -A BOGONS -s 192.0.0.0/24 -j DROP
+iptables -A BOGONS -s 192.0.2.0/24 -j DROP
+#iptables -A BOGONS -s 192.168.0.0/16 -j DROP
+iptables -A BOGONS -s 198.18.0.0/15 -j DROP
+iptables -A BOGONS -s 198.51.100.0/24 -j DROP
+iptables -A BOGONS -s 203.0.113.0/24 -j DROP
+iptables -A BOGONS -s 224.0.0.0/4 -j DROP
+iptables -A BOGONS -s 240.0.0.0/4 -j DROP
+iptables -A BOGONS -s 255.255.255.255/32 -j DROP
+
+# Apply to INPUT chain
+iptables -I INPUT 1 -j BOGONS
+
+
 iptables -A INPUT -s 127.0.0.0/8 -j DROP
 iptables -A OUTPUT -p tcp -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -p udp -m state --state NEW,ESTABLISHED -j ACCEPT
