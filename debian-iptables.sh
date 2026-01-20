@@ -49,7 +49,7 @@ iptables -I INPUT -p udp --destination-port 7 -j DROP
 #gemini ipsets
 #https://en.wikipedia.org/wiki/List_of_United_States_extradition_treaties
 #we are always at war with eurasia
-
+ipset flush
 ipset create china hash:net
 ipset create russia hash:net
 ipset create china hash:net
