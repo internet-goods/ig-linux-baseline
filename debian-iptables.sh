@@ -3,6 +3,7 @@ apt-get -y install iptables-persistent
 iptables -F
 iptables -P INPUT DROP
 iptables -P OUTPUT DROP
+#this is not a forwarding firewall config by design
 iptables -P FORWARD DROP
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
@@ -15,7 +16,6 @@ iptables -A INPUT -p udp -m state --state ESTABLISHED -j ACCEPT
 iptables -A INPUT -p icmp -m state --state ESTABLISHED -j ACCEPT
 iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
 iptables -I OUTPUT -m state --state INVALID -j DROP 
-iptables -I FORWARD -m state --state INVALID -j DROP 
 iptables -I INPUT -m state --state INVALID -j DROP 
 iptables -I INPUT --fragment -j DROP 
 iptables -I INPUT -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
@@ -42,10 +42,6 @@ iptables -I INPUT -d 224.0.0.0/4      -j DROP
 #block outgoing multicast mDNS 
 intables -I OUTPUT -s 224.0.0.0/4   -j DROP
 iptables -I OUTPUT -d 224.0.0.0/4   -j DROP
-
-
-
-
 iptables -I INPUT -s 240.0.0.0/5      -j DROP 
 iptables -I INPUT -d 240.0.0.0/5      -j DROP
 iptables -I INPUT -d 239.255.255.0/24 -j DROP 
