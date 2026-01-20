@@ -1,9 +1,7 @@
 apt-get -y install iptables-persistent
-#3.6 iptables
 iptables -F
 iptables -P INPUT DROP
 iptables -P OUTPUT DROP
-#this is not a forwarding firewall config by design
 iptables -P FORWARD DROP
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
@@ -15,6 +13,7 @@ iptables -A INPUT -p tcp -m state --state ESTABLISHED -j ACCEPT
 iptables -A INPUT -p udp -m state --state ESTABLISHED -j ACCEPT
 iptables -A INPUT -p icmp -m state --state ESTABLISHED -j ACCEPT
 iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
+iptables -A INPUT -p tcp --dport 25 -m state --state NEW -j ACCEPT
 iptables -I OUTPUT -m state --state INVALID -j DROP 
 iptables -I INPUT -m state --state INVALID -j DROP 
 iptables -I INPUT --fragment -j DROP 
@@ -47,5 +46,28 @@ iptables -I INPUT -d 240.0.0.0/5      -j DROP
 iptables -I INPUT -d 239.255.255.0/24 -j DROP 
 iptables -I INPUT -p tcp -m state --state NEW ! --syn -j DROP
 iptables -I INPUT -p udp --destination-port 7 -j DROP
+echo block non extradition countries
+#https://en.wikipedia.org/wiki/List_of_United_States_extradition_treaties
+#we are always at war with eurasia
+curl -s http://www.ipdeny.com/ipblocks/data/countries/cn.zone | while read line; do sudo ipset add china $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/ru.zone | while read line; do sudo ipset add russia $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/vn.zone | while read line; do sudo ipset add vietnam $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/id.zone | while read line; do sudo ipset add indo $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/ae.zone | while read line; do sudo ipset add uae $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/sa.zone | while read line; do sudo ipset add saudi $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/ua.zone | while read line; do sudo ipset add ukraine $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/by.zone | while read line; do sudo ipset add belarus $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/me.zone | while read line; do sudo ipset add montenegro $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/kh.zone | while read line; do sudo ipset add cambodia $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/la.zone | while read line; do sudo ipset add laos $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/vu.zone | while read line; do sudo ipset add vanuatu $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/ws.zone | while read line; do sudo ipset add samoa $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/er.zone | while read line; do sudo ipset add eritrea $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/et.zone | while read line; do sudo ipset add ethiopia $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/cu.zone | while read line; do sudo ipset add cuba $line; done
+curl -s http://www.ipdeny.com/ipblocks/data/countries/ve.zone | while read line; do sudo ipset add venezuela $line; done
+iptables -I INPUT -m set --match-set china src -j DROP
+iptables -I INPUT -m set --match-set russia src -j DROP
+
 iptables-save > /etc/iptables/rules.v4
 systemctl enable iptables
