@@ -46,9 +46,28 @@ iptables -I INPUT -d 240.0.0.0/5      -j DROP
 iptables -I INPUT -d 239.255.255.0/24 -j DROP 
 iptables -I INPUT -p tcp -m state --state NEW ! --syn -j DROP
 iptables -I INPUT -p udp --destination-port 7 -j DROP
-echo block non extradition countries
+#gemini ipsets
 #https://en.wikipedia.org/wiki/List_of_United_States_extradition_treaties
 #we are always at war with eurasia
+
+ipset create china hash:net
+ipset create russia hash:net
+sudo ipset create china hash:net
+sudo ipset create russia hash:net
+sudo ipset create vietnam hash:net
+sudo ipset create indo hash:net
+sudo ipset create uae hash:net
+sudo ipset create saudi hash:net
+sudo ipset create ukraine hash:net
+sudo ipset create belarus hash:net
+sudo ipset create montenegro hash:net
+sudo ipset create cambodia hash:net
+sudo ipset create laos hash:net
+sudo ipset create vanuatu hash:net
+sudo ipset create samoa hash:net
+sudo ipset create eritrea hash:net
+sudo ipset create cuba hash:net
+sudo ipset create venezuela hash:net
 curl -s http://www.ipdeny.com/ipblocks/data/countries/cn.zone | while read line; do sudo ipset add china $line; done
 curl -s http://www.ipdeny.com/ipblocks/data/countries/ru.zone | while read line; do sudo ipset add russia $line; done
 curl -s http://www.ipdeny.com/ipblocks/data/countries/vn.zone | while read line; do sudo ipset add vietnam $line; done
@@ -83,7 +102,7 @@ iptables -I INPUT -m set --match-set eritrea src -j DROP
 iptables -I INPUT -m set --match-set ethiopia src -j DROP
 iptables -I INPUT -m set --match-set cuba src -j DROP
 iptables -I INPUT -m set --match-set venezuela src -j DROP
-#gemini IPS
+
 sudo ipset create bad_ips hash:ip
 # Download and add (this requires 'curl')
 curl -s https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt | \
