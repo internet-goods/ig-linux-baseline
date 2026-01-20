@@ -52,22 +52,22 @@ iptables -I INPUT -p udp --destination-port 7 -j DROP
 
 ipset create china hash:net
 ipset create russia hash:net
-sudo ipset create china hash:net
-sudo ipset create russia hash:net
-sudo ipset create vietnam hash:net
-sudo ipset create indo hash:net
-sudo ipset create uae hash:net
-sudo ipset create saudi hash:net
-sudo ipset create ukraine hash:net
-sudo ipset create belarus hash:net
-sudo ipset create montenegro hash:net
-sudo ipset create cambodia hash:net
-sudo ipset create laos hash:net
-sudo ipset create vanuatu hash:net
-sudo ipset create samoa hash:net
-sudo ipset create eritrea hash:net
-sudo ipset create cuba hash:net
-sudo ipset create venezuela hash:net
+ipset create china hash:net
+ipset create russia hash:net
+ipset create vietnam hash:net
+ipset create indo hash:net
+ipset create uae hash:net
+ipset create saudi hash:net
+ipset create ukraine hash:net
+ipset create belarus hash:net
+ipset create montenegro hash:net
+ipset create cambodia hash:net
+ipset create laos hash:net
+ipset create vanuatu hash:net
+ipset create samoa hash:net
+ipset create eritrea hash:net
+ipset create cuba hash:net
+ipset create venezuela hash:net
 curl -s http://www.ipdeny.com/ipblocks/data/countries/cn.zone | while read line; do sudo ipset add china $line; done
 curl -s http://www.ipdeny.com/ipblocks/data/countries/ru.zone | while read line; do sudo ipset add russia $line; done
 curl -s http://www.ipdeny.com/ipblocks/data/countries/vn.zone | while read line; do sudo ipset add vietnam $line; done
