@@ -50,16 +50,9 @@ iptables -A BEHAVE -p tcp --tcp-flags FIN,RST FIN,RST -j DROP
 iptables -A BEHAVE -p tcp --tcp-flags ACK,URG URG -j DROP
 iptables -A BEHAVE -p tcp --tcp-flags ACK,PSH PSH -j DROP
 iptables -A BEHAVE -p tcp --tcp-flags ACK,FIN FIN -j DROP
-iptables -I INPUT -p tcp -m state --state NEW ! --syn -j DROP
-#iptables -I INPUT -p udp --destination-port 7 -j DROP
-#iptables -I INPUT -p udp -m limit --limit 3/s -j ACCEPT
-#iptables -I INPUT -p udp -m pkttype --pkt-type broadcast -j DROP
+iptables -A BEHAVE -p tcp -m state --state NEW ! --syn -j DROP
 #iptables -I INPUT -p tcp -m tcp --tcp-flags RST RST -m limit --limit 2/second --limit-burst 2 -j ACCEPT
-#iptables -I INPUT -p icmp --icmp-type echo-request -m limit --limit 3/s -m length --length 60:65535 -j ACCEPT
-#iptables -I INPUT -p icmp -m icmp --icmp-type timestamp-request -j DROP
-#iptables -I INPUT -p icmp -m icmp --icmp-type address-mask-request -j DROP
-#iptables -I INPUT -p tcp -m state --state NEW -m limit --limit 2/second --limit-burst 2 -j ACCEPT
-
+iptables -A INPUT -j BEHAVE
 
 #ipsets
 #https://en.wikipedia.org/wiki/List_of_United_States_extradition_treaties
@@ -101,23 +94,25 @@ curl -s http://www.ipdeny.com/ipblocks/data/countries/er.zone | while read line;
 curl -s http://www.ipdeny.com/ipblocks/data/countries/et.zone | while read line; do sudo ipset add ethiopia $line; done
 curl -s http://www.ipdeny.com/ipblocks/data/countries/cu.zone | while read line; do sudo ipset add cuba $line; done
 curl -s http://www.ipdeny.com/ipblocks/data/countries/ve.zone | while read line; do sudo ipset add venezuela $line; done
-iptables -I INPUT -m set --match-set china src -j DROP
-iptables -I INPUT -m set --match-set russia src -j DROP
-iptables -I INPUT -m set --match-set vietnam src -j DROP
-iptables -I INPUT -m set --match-set indo src -j DROP
-iptables -I INPUT -m set --match-set uae src -j DROP
-iptables -I INPUT -m set --match-set saudi src -j DROP
-iptables -I INPUT -m set --match-set ukraine src -j DROP
-iptables -I INPUT -m set --match-set belarus src -j DROP
-iptables -I INPUT -m set --match-set montenegro src -j DROP
-iptables -I INPUT -m set --match-set cambodia src -j DROP
-iptables -I INPUT -m set --match-set laos src -j DROP
-iptables -I INPUT -m set --match-set vanuatu src -j DROP
-iptables -I INPUT -m set --match-set samoa src -j DROP
-iptables -I INPUT -m set --match-set eritrea src -j DROP
-iptables -I INPUT -m set --match-set ethiopia src -j DROP
-iptables -I INPUT -m set --match-set cuba src -j DROP
-iptables -I INPUT -m set --match-set venezuela src -j DROP
+iptables -N COUNTRY
+iptables -A COUNTRY -m set --match-set china src -j DROP
+iptables -A COUNTRY -m set --match-set russia src -j DROP
+iptables -A COUNTRY -m set --match-set vietnam src -j DROP
+iptables -A COUNTRY -m set --match-set indo src -j DROP
+iptables -A COUNTRY -m set --match-set uae src -j DROP
+iptables -A COUNTRY -m set --match-set saudi src -j DROP
+iptables -A COUNTRY -m set --match-set ukraine src -j DROP
+iptables -A COUNTRY -m set --match-set belarus src -j DROP
+iptables -A COUNTRY -m set --match-set montenegro src -j DROP
+iptables -A COUNTRY -m set --match-set cambodia src -j DROP
+iptables -A COUNTRY -m set --match-set laos src -j DROP
+iptables -A COUNTRY -m set --match-set vanuatu src -j DROP
+iptables -A COUNTRY -m set --match-set samoa src -j DROP
+iptables -A COUNTRY -m set --match-set eritrea src -j DROP
+iptables -A COUNTRY -m set --match-set ethiopia src -j DROP
+iptables -A COUNTRY -m set --match-set cuba src -j DROP
+iptables -A COUNTRY -m set --match-set venezuela src -j DROP
+iptables -A INPUT -j COUNTRY
 
 sudo ipset create bad_ips hash:ip
 # Download and add (this requires 'curl')
@@ -126,7 +121,7 @@ grep -v "#" | while read ip; do
     sudo ipset add bad_ips $ip
 done
 # Apply to firewall
-#iptables -I INPUT -m set --match-set bad_ips src -j DROP
+iptables -I INPUT -m set --match-set bad_ips src -j DROP
 # Add anyone hitting Telnet (23) to the blacklist
 iptables -A INPUT -p tcp --dport 23 -j SET --add-set port_scanners src
 # Drop all traffic from anyone in the blacklist
