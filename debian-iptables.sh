@@ -1,4 +1,4 @@
-apt-get -y install iptables-persistent
+#apt-get -y install iptables-persistent
 iptables -F
 iptables -P INPUT DROP
 iptables -P OUTPUT DROP
@@ -33,51 +33,6 @@ iptables -A BOGONS -s 240.0.0.0/4 -j DROP
 iptables -A BOGONS -s 255.255.255.255/32 -j DROP
 # Apply to INPUT chain
 iptables -A INPUT -j BOGONS
-
-#FILTER2 BEHAVIORAL
-#iptables -I OUTPUT -m state --state INVALID -j DROP 
-iptables -N BEHAVE 
-iptables -A BEHAVE -m state --state INVALID -j DROP 
-iptables -A BEHAVE --fragment -j DROP 
-iptables -A BEHAVE -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
-iptables -A BEHAVE -p tcp --tcp-flags ALL SYN,FIN,PSH,URG -j DROP
-iptables -A BEHAVE -p tcp --tcp-flags ALL FIN,PSH,URG -j DROP
-iptables -A BEHAVE -p tcp --tcp-flags ALL NONE -j DROP
-iptables -A BEHAVE -p tcp --tcp-flags ALL ALL -j DROP
-iptables -A BEHAVE -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
-iptables -A BEHAVE -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
-iptables -A BEHAVE -p tcp --tcp-flags FIN,RST FIN,RST -j DROP
-iptables -A BEHAVE -p tcp --tcp-flags ACK,URG URG -j DROP
-iptables -A BEHAVE -p tcp --tcp-flags ACK,PSH PSH -j DROP
-iptables -A BEHAVE -p tcp --tcp-flags ACK,FIN FIN -j DROP
-iptables -A BEHAVE -p tcp -m state --state NEW ! --syn -j DROP
-#iptables -I INPUT -p tcp -m tcp --tcp-flags RST RST -m limit --limit 2/second --limit-burst 2 -j ACCEPT
-iptables -A INPUT -j BEHAVE
-
-#ipsets
-#https://en.wikipedia.org/wiki/List_of_United_States_extradition_treaties
-#we are always at war with eurasia
-ipset flush
-ipset create china hash:net
-ipset create russia hash:net
-ipset create china hash:net
-ipset create russia hash:net
-ipset create vietnam hash:net
-ipset create indo hash:net
-ipset create uae hash:net
-ipset create saudi hash:net
-ipset create ukraine hash:net
-ipset create belarus hash:net
-ipset create montenegro hash:net
-ipset create cambodia hash:net
-ipset create laos hash:net
-ipset create vanuatu hash:net
-ipset create samoa hash:net
-ipset create eritrea hash:net
-ipset create ethiopia hash:net
-ipset create cuba hash:net
-ipset create venezuela hash:net
-
 iptables -N COUNTRY
 iptables -A COUNTRY -m set --match-set china src -j DROP
 iptables -A COUNTRY -m set --match-set russia src -j DROP
@@ -98,13 +53,35 @@ iptables -A COUNTRY -m set --match-set cuba src -j DROP
 iptables -A COUNTRY -m set --match-set venezuela src -j DROP
 iptables -A INPUT -j COUNTRY
 
-sudo ipset create ipsum hash:ip
-# Apply to firewall
-iptables -I INPUT -m set --match-set ipsum src -j DROP
+#iptables -I OUTPUT -m state --state INVALID -j DROP 
+iptables -N BEHAVE 
+iptables -A BEHAVE -m state --state INVALID -j DROP 
+iptables -A BEHAVE --fragment -j DROP 
+iptables -A BEHAVE -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ALL SYN,FIN,PSH,URG -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ALL FIN,PSH,URG -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ALL NONE -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ALL ALL -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags SYN,FIN SYN,FIN -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags FIN,RST FIN,RST -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ACK,URG URG -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ACK,PSH PSH -j DROP
+iptables -A BEHAVE -p tcp --tcp-flags ACK,FIN FIN -j DROP
+iptables -A BEHAVE -p tcp -m state --state NEW ! --syn -j DROP
+#iptables -I INPUT -p tcp -m tcp --tcp-flags RST RST -m limit --limit 2/second --limit-burst 2 -j ACCEPT
 # Add anyone hitting Telnet (23) to the blacklist
-iptables -A INPUT -p tcp --dport 23 -j SET --add-set port_scanners src
+iptables -A BEHAVE -p tcp --dport 23 -j SET --add-set port_scanners src
 # Drop all traffic from anyone in the blacklist
-iptables -I INPUT -m set --match-set port_scanners src -j DROP
+iptables -A BEHAVE -m set --match-set port_scanners src -j DROP
+iptables -A INPUT -j BEHAVE
+#created with ig-ipset.sh
+
+
+iptables -N INTEL
+iptables -A INTEL -m set --match-set ipsum src -j DROP
+iptables -A INPUT -j INTEL
+
 #we made it!
 iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
 #iptables -A INPUT -p tcp --dport 25 -m state --state NEW -j ACCEPT
@@ -114,6 +91,5 @@ iptables -A INPUT -p tcp --dport 25 -m state --state NEW -m hashlimit \
 --hashlimit-burst 10 \
 --hashlimit-mode srcip \
 -j ACCEPT
-
 iptables-save > /etc/iptables/rules.v4
-systemctl enable iptables
+#systemctl enable iptables
