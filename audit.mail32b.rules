@@ -1,0 +1,42 @@
+# --- 1. Basic Housekeeping ---
+# Remove any existing rules
+-D
+# Set buffer size (increase if you see "audit: backlog limit exceeded")
+-b 8192
+# Failure mode: 1 = print a message, 2 = panic (reboot)
+-f 1
+-w /etc/postfix/ -p wa -k postfix_config
+-w /usr/sbin/postfix -p x -k postfix_binary
+-w /usr/lib/postfix/ -p x -k postfix_binary
+-w /etc/dovecot/ -p wa -k dovecot_config
+-w /usr/sbin/dovecot -p x -k dovecot_binary
+-w /usr/lib/dovecot/ -p x -k dovecot_binary
+# --- 4. Critical System Files (Standard Debian Security) ---
+-w /etc/passwd -p wa -k identity
+-w /etc/group -p wa -k identity
+-w /etc/shadow -p wa -k identity
+-w /etc/sudoers -p wa -k priv_escalation
+-w /etc/ssh/sshd_config -p wa -k sshd_config
+
+# --- 5. Kernel & System Calls (32-bit Specific) ---
+# Monitor for unauthorized time changes
+-a always,exit -S adjtimex -S settimeofday -S stime -k time_change
+
+# Monitor socket operations (On 32-bit, many network calls go through socketcall)
+-a always,exit -S socketcall -F auid>=1000 -F auid!=-1 -k network_socket
+
+# Monitor for loading/unloading kernel modules
+-w /sbin/insmod -p x -k modules
+-w /sbin/rmmod -p x -k modules
+-w /sbin/modprobe -p x -k modules
+-a always,exit -S init_module -S delete_module -k modules
+
+# --- 6. Tracking Mail Data Access ---
+# WARNING: This can be noisy. Monitor access to the mail spool if needed.
+# -w /var/mail/ -p wa -k mail_spool
+# -w /var/vmail/ -p wa -k virtual_mail
+
+# --- 7. Make the Configuration Immutable ---
+# This prevents rules from being changed without a reboot. 
+# Remove this line while testing.
+-e 2
