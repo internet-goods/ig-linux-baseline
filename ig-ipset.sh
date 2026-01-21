@@ -36,10 +36,10 @@ curl -s http://www.ipdeny.com/ipblocks/data/countries/et.zone | while read line;
 curl -s http://www.ipdeny.com/ipblocks/data/countries/cu.zone | while read line; do sudo ipset add cuba $line; done
 curl -s http://www.ipdeny.com/ipblocks/data/countries/ve.zone | while read line; do sudo ipset add venezuela $line; done
 
-sudo ipset create ipsum hash:ip
+ipset create ipsum hash:ip
 # Download and add (this requires 'curl')
 curl -s https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt | \
 grep -v "#" | while read ip; do 
-    sudo ipset add ipsum $ip
+     ipset add ipsum $ip
 done
 
