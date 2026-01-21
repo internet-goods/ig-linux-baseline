@@ -20,3 +20,7 @@ echo "kernel.core_uses_pid=1" >> /etc/sysctl.conf
 echo "kernel.kptr_restrict=2" >> /etc/sysctl.conf
 echo "kernel.sysrq=0"  >> /etc/sysctl.conf
 echo "kernel.yama.ptrace_scope=3"   >> /etc/sysctl.conf
+# Set a specific max sample rate
+echo "kernel.perf_event_max_sample_rate = 100000"  >> /etc/sysctl.conf
+# Disable the "auto-throttle" mechanism (optional)
+echo "kernel.perf_cpu_time_max_percent = 25" >> /etc/sysctl.conf
