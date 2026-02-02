@@ -25,7 +25,8 @@ cp issue /etc/issue.net
 # Open inbound ssh(tcp port 22) connections
 #5.2 ssh cfg
 chmod og-rwx /etc/ssh/sshd_config
-echo "LogLevel VERBOSE" > /etc/ssh/sshd_config.d/baseline.conf
+echo "Banner /etc/issue.net" > /etc/ssh/sshd_config.d/baseline.conf
+echo "LogLevel VERBOSE" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "X11Forwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "MaxAuthTries 3" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "IgnoreRhosts yes" >> /etc/ssh/sshd_config.d/baseline.conf
