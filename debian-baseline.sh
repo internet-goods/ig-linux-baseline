@@ -97,6 +97,7 @@ echo "install usb-storage /bin/true" >> /etc/modprobe.d/debian-baseline.conf
 
 echo umask 022 > /etc/profile.d/debian-baseline.sh
 
+
 chmod 600 /etc/crontab
 chmod 700 /etc/cron.d
 chmod 700 /etc/cron.daily
