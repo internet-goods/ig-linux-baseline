@@ -11,6 +11,7 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
+      - "123:123/udp"
 #noDHCP      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
       - "81:80/tcp"
       - "444:443/tcp"
