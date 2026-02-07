@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  onlyoffice:
+    image: onlyoffice/documentserver:8.0
+    container_name: onlyoffice
+    labels:
+      - "ig=true"
+    restart: unless-stopped
+    ports:
+      - "8082:80"
+    environment:
+      JWT_ENABLED: "true"
+      JWT_SECRET: supersecretjwt
+    volumes:
+      - onlyoffice:/var/www/onlyoffice
+    networks:
+      - sobridge
+networks:
+  sobridge:
+    name: sobridge
+    external: true
+
+volumes:
+  onlyoffice:
