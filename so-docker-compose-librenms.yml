@@ -1,0 +1,52 @@
+services:
+  librenms:
+    image: librenms/librenms:latest
+    container_name: librenms
+    labels:
+      - "ig=true"
+    hostname: librenms
+    ports:
+      - "8000:80"
+    volumes:
+      - "./librenms:/data"
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=librenms-mariadb
+      - DB_NAME=librenms
+      - DB_USER=librenms
+      - DB_PASSWORD=librenms_pass # Must match MYSQL_PASSWORD
+      - TZ=America/Chicago
+      - PUID=1000
+      - PGID=1000
+    depends_on:
+      - librenms-mariadb
+      - librenms-redis
+    networks:
+      - sobridge
+
+
+  librenms-mariadb:
+    image: mariadb:10.5
+    container_name: librenms_db
+    labels:
+      - "ig=true"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_pass
+      - MYSQL_DATABASE=librenms
+      - MYSQL_USER=librenms
+      - MYSQL_PASSWORD=librenms_pass
+    volumes:
+      - "./librenms-mariadb:/var/lib/mysql"
+    networks:
+      - sobridge
+
+  librenms-redis:
+    image: redis:6.2-alpine
+    container_name: librenms_redis
+    networks:
+      - sobridge
+networks:
+  sobridge:
+    name: sobridge
+    external: true
