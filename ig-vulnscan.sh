@@ -1,3 +1,5 @@
+mkdir $(date -I)
+cd $(date -I)
 curl -L https://meltdown.ovh -o spectre-meltdown-checker.sh
 chmod +x spectre-meltdown-checker.shspectre-meltdown-checker.sh
 ./spectre-meltdown-checker.sh > spectre-meltdown-checker-$(date -I).log
