@@ -3,13 +3,15 @@ echo "iptables -I INPUT -i bond0 -d 255.255.255.255 -s 0.0.0.0 -p udp --dport 67
 dnf -y install epel-release 
 dnf -y install lsb-release
 #monitoring
-dnf -y install htop sysstat iotop smartmontools lsof lm_sensors hddtemp mcelog psacct usbutils iftop inxi
+dnf -y install htop sysstat iotop smartmontools lsof hddtemp mcelog psacct usbutils iftop inxi
+#lm_sensors has been removed
+#yes|sensors-detect
 #dnf -y install bluez rtl-sdr hcxtools
 dnf -y install lynis openscap openscap-utils scap-security-guide
 
 #systemctl enable bluetooth
 #systemctl start bluetooth
-yes|sensors-detect
+
 sensors
 systemctl enable smartd
 systemctl start smartd
