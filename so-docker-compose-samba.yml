@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  samba:
+    image: dperson/samba:latest
+    networks:
+      - sobridge
+    container_name: so-samba
+    restart: unless-stopped
+    ports:
+      - "445:445"
+      - "139:139"
+    volumes:
+      - /export/samba:/export/samba:rw
+
+    environment:
+      - USERID=1000
+      - GROUPID=1000
+
+    command: >
+      -u "so;securityonion"
+      -s "export;/export/samba;yes;no;no;so"
+networks:
+  sobridge:
+    name: sobridge
+    external: true
