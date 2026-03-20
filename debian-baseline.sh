@@ -54,6 +54,7 @@ apt -y install screen
 apt-get -y install  alpine
 apt-get -y install htop iotop iftop lm-sensors audispd-plugins usbguard sysstat hdparm
 apt-get -y install bc
+apt-get -y install net-tools
 #pam
 apt-get -y install libpam-tmpdir libpam-usb 
 apt-get -y install libpam-cracklib
