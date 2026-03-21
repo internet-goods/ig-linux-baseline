@@ -148,7 +148,9 @@ systemctl disable kdump.service
 #git clone https://github.com/elasticsearch-dump/elasticsearch-dump
 #tune down MTU for suricata
 cd /etc/NetworkManager/system-connections
-find . -type f -exec sed -i 's/9000/4088/g' {} +
+#find . -type f -exec sed -i 's/9000/4088/g' {} +
+#driver changes reduced from 4088 to 1500 mtu greater than device maximum
+find . -type f -exec sed -i 's/9000/1500/g' {} +
 mkdir /nsm/kismet
 #docker run -d --rm -p 2501:2501 -it --privileged --net=sobridge --pid=host finchsec/kismet
 mkdir /nsm/pihole
