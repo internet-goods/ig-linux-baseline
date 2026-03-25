@@ -9,7 +9,9 @@ dnf -y install htop sysstat iotop smartmontools lsof hddtemp mcelog psacct usbut
 #yes|sensors-detect
 #dnf -y install bluez rtl-sdr hcxtools
 dnf -y install lynis openscap openscap-utils scap-security-guide
-
+dnf -y install ntpsec
+systemctl enable ntpd
+systemctl start ntpd
 #systemctl enable bluetooth
 #systemctl start bluetooth
 
