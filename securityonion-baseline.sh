@@ -167,5 +167,5 @@ curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-contai
 dnf install -y nvidia-container-toolkit
 nvidia-ctk runtime configure --runtime=docker
 systemctl restart docker
-
+docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
   
