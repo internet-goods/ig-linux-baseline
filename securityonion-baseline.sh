@@ -162,3 +162,10 @@ docker run -it --name ig-misp --network=sobridge --rm -v /nsm/misp:/var/lib/mysq
 docker run -it -d --name ig-misp -p 446:443 -p 82:80 -p 3306:3306 -v /nsm/misp:/var/lib/mysql harvarditsecurity/misp
 mkdir /nsm/samba
 docker run -it --restart unless-stopped --name ig-samba -p 139:139/tcp -p 445:445/tcp -p 137:137/udp -p 138:138/udp -v /nsm/samba:/share -d dperson/samba -u "igsamba;password" -s "samba;/share;yes;no;yes;igsamba"
+mkdir /nsm/gpu
+curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo > /etc/yum.repos.d/nvidia-container-toolkit.repo
+dnf install -y nvidia-container-toolkit
+nvidia-ctk runtime configure --runtime=docker
+systemctl restart docker
+
+  
