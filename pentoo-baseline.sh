@@ -7,8 +7,6 @@ rc-update add iptables
 rc-service ip6tables start
 rc-update add ip6tables
 rc-update add sendmail
-rc-service haveged start
-rc-update add haveged
 rc-service rngd start
 rc-update add rngd
 rc-update add thermald
@@ -18,10 +16,6 @@ rc-service lm_sensors start
 rc-update add sensord
 rc-service sensord start
 rc-update add mdraid boot
-rc-service privoxy start
-rc-update add privoxy
-rc-service auditd start
-rc-update-add auditd
 rc-update -v show
 rc-status
 bash ./gentoo-localtime.sh
@@ -35,6 +29,7 @@ cp ./issue /etc/issue
 cp audit.rules /etc/audit
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 /etc/init.d/auditd restart
+rc-update-add auditd
 
 
 echo "MACs -*sha1*,umac-64*,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512" > /etc/ssh/sshd_config.d/ig-pentoo-ssh.conf
@@ -60,6 +55,8 @@ emerge net-analyzer/suricata
 emerge app-antivirus/clamav
 emerge sys-process/audit
 emerge net-proxy/privoxy
+rc-service privoxy start
+rc-update add privoxy
 emerge logrotate
 emerge sys-apps/smartmontools
 rc-service smartd start
@@ -67,6 +64,8 @@ rc-update add smartd
 rc-service smartd start
 emerge --config dev-db/postgresql:15
 emerge sys-apps/haveged
+rc-service haveged start
+rc-update add haveged
 emerge sys-apps/rng-tools
 emerge app-admin/sysstat
 emerge app-admin/gkrellm
