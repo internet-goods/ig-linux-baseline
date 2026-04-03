@@ -6,9 +6,6 @@ rc-service iptables start
 rc-update add iptables 
 rc-service ip6tables start
 rc-update add ip6tables
-rc-service smartd start
-rc-update add smartd
-rc-service smartd start
 rc-update add sendmail
 rc-service haveged start
 rc-update add haveged
@@ -65,6 +62,9 @@ emerge sys-process/audit
 emerge net-proxy/privoxy
 emerge logrotate
 emerge sys-apps/smartmontools
+rc-service smartd start
+rc-update add smartd
+rc-service smartd start
 emerge --config dev-db/postgresql:15
 emerge sys-apps/haveged
 emerge sys-apps/rng-tools
