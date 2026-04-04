@@ -156,6 +156,7 @@ emerge games-roguelike/nethack
 echo "ACCEPT_LICENSE=NVIDIA-CUDA" >> ACCEPT_LICENSE=NVIDIA-CUDA
 echo "dev-util/nvidia-cuda-toolkit ~amd64" >> /etc/portage/package.accept_keywords
 echo "sys-devel/gcc:14 **" >> /etc/portage/package.accept_keywords
+#sed remove gcc mask /var/db/repos/pentoo/profiles/pentoo/base/package.mask
 emerge dev-util/nvidia-cuda-toolkit
 emerge app-containers/docker
 emerge app-containers/docker-compose
