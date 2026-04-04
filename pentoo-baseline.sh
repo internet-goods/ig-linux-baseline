@@ -155,7 +155,7 @@ emerge app-text/xpdf
 emerge games-roguelike/nethack
 echo "ACCEPT_LICENSE=NVIDIA-CUDA" >> ACCEPT_LICENSE=NVIDIA-CUDA
 echo "dev-util/nvidia-cuda-toolkit ~amd64" >> /etc/portage/package.accept_keywords
-echo "sys-devel/gcc ~amd64" >> /etc/portage/package.accept_keywords
+echo "sys-devel/gcc:14 **" >> /etc/portage/package.accept_keywords
 emerge dev-util/nvidia-cuda-toolkit
 emerge app-containers/docker
 emerge app-containers/docker-compose
