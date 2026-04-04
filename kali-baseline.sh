@@ -138,7 +138,7 @@ chmod 600 /etc/cron.deny
 #    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
 #    tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 #apt install -y nvidia-container-toolkit
-#apt -y install htcondor
+apt -y install condor
 apt -y install docker.io docker-doc docker-compose containerd
 systemctl enable docker
 systemctl start docker
