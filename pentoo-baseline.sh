@@ -153,12 +153,17 @@ emerge net-wireless/gqrx-scanner
 emerge net-wireless/mdk
 emerge app-text/xpdf
 emerge games-roguelike/nethack
-#virtualization
+echo "ACCEPT_LICENSE=NVIDIA-CUDA" >> ACCEPT_LICENSE=NVIDIA-CUDA
+echo "dev-util/nvidia-cuda-toolkit ~amd64" >> /etc/portage/package.accept_keywords
+emerge dev-util/nvidia-cuda-toolkit
 emerge app-containers/docker
 emerge app-containers/docker-compose
 emerge app-containers/docker-cli
 emerge app-emulation/libvirt
 emerge app-emulation/virt-manager
 emerge app-emulation/virtualbox
+
+
+
 cp /usr/share/zoneinfo/America/Chicago /etc/localtime
 echo "options cfg80211 ieee80211_regdom=US" >/etc/conf.d/wireless-regdom
