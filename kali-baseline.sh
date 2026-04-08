@@ -4,7 +4,7 @@ sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 /etc/init.d/auditd restart
 
 bash debian-cron.sh
-bash debian-iptables.sh
+
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
 echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
 
@@ -97,6 +97,8 @@ apt -y autoremove
 #purge to pass lynis
 dpkg --get-selections | awk '$2=="deinstall" {system("sudo apt-get -y purge "$1)}'
 #lynis audit system
+apt -y install iptables iptables-persistent
+bash debian-iptables.sh
 
 sed -i 's/22/27/g' /etc/login.defs
 echo "SHA_CRYPT_MIN_ROUNDS 800000" >> /etc/login.defs
