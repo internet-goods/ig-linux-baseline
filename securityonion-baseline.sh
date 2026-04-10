@@ -162,7 +162,7 @@ docker run -d --name ig-pihole --network=sobridge -p 53:53/tcp -p 53:53/udp -p 8
 #pihole restartdns
 mkdir /nsm/misp
 docker run -it --name ig-misp --network=sobridge --rm -v /nsm/misp:/var/lib/mysql harvarditsecurity/misp /init-db
-docker run -it -d --name ig-misp -p 446:443 -p 82:80 -p 3306:3306 -v /nsm/misp:/var/lib/mysql harvarditsecurity/misp
+docker run -it -d --name ig-misp --network=sobridge -p 446:443 -p 82:80 -p 3306:3306 -v /nsm/misp:/var/lib/mysql harvarditsecurity/misp
 mkdir /nsm/samba
 docker run -it --restart unless-stopped --name ig-samba -p 139:139/tcp -p 445:445/tcp -p 137:137/udp -p 138:138/udp -v /nsm/samba:/share -d dperson/samba -u "igsamba;password" -s "samba;/share;yes;no;yes;igsamba"
 mkdir /nsm/gpu
