@@ -155,9 +155,10 @@ emerge net-wireless/gqrx-scanner
 emerge net-wireless/mdk
 emerge app-text/xpdf
 emerge games-roguelike/nethack
-echo "ACCEPT_LICENSE=NVIDIA-CUDA" >> ACCEPT_LICENSE=NVIDIA-CUDA
+echo "dev-util/nvidia-cuda-toolkit NVIDIA-CUDA" >> /etc/portage/package.license
 echo "dev-util/nvidia-cuda-toolkit ~amd64" >> /etc/portage/package.accept_keywords
-echo "sys-devel/gcc:14 **" >> /etc/portage/package.accept_keywords
+echo "=sys-devel/gcc-14.4.9999 **" >> /etc/portage/package.accept_keywords
+echo "=sys-devel/gcc-14.4.9999" >> /etc/portage/package.unmask
 #sed remove gcc mask /var/db/repos/pentoo/profiles/pentoo/base/package.mask
 emerge dev-util/nvidia-cuda-toolkit
 emerge app-containers/docker
