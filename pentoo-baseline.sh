@@ -1,5 +1,7 @@
 #!/bin/bash
 #bash ./gentoo-openrc.sh
+sed -i 's/config_eth0="null"/config_eth0="dhcp"/' /etc/conf.d/net
+rc-update add net.eth0 default
 rc-service sshd start
 rc-update add sshd
 rc-service iptables start
