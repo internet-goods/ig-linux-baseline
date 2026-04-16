@@ -188,7 +188,7 @@ services:
   nginx:
     image: registry.community.greenbone.net/community/nginx:latest
     ports:
-      - 127.0.0.1:9392:9392
+      - "9392:9392/tcp"
     volumes:
       - nginx_config_vol:/etc/nginx/conf.d:ro
       - nginx_certificates_vol:/etc/nginx/certs:ro
@@ -274,9 +274,10 @@ services:
       gpg-data:
         condition: service_completed_successfully
     networks:
-      default:
-        aliases:
-          - openvasd
+      - sobridge
+        #     default:
+        #aliases:
+        #  - openvasd
 
   ospd-openvas:
     image: registry.community.greenbone.net/community/ospd-openvas:stable
@@ -320,6 +321,8 @@ services:
         condition: service_healthy
       notus-data:
         condition: service_healthy
+    networks:
+      - sobridge
 
   gvm-tools:
     image: registry.community.greenbone.net/community/gvm-tools
@@ -329,6 +332,8 @@ services:
     depends_on:
       - gvmd
       - ospd-openvas
+    networks:
+      - sobridge
 
 volumes:
   gpg_data_vol:
