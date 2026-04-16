@@ -72,6 +72,7 @@ emerge sys-apps/rng-tools
 emerge app-admin/sysstat
 emerge app-admin/gkrellm
 emerge app-misc/screen
+emerge net-wireless/iw
 #disk usage graph
 emerge sys-apps/baobab
 echo app-forensics/lynis ~amd64 >> /etc/portage/package.accept_keywords
