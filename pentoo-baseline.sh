@@ -110,7 +110,9 @@ emerge sys-apps/hwinfo
 emerge media-video/mpv
 emerge media-tv/v4l-utils
 emerge media-sound/audacity
-emerge  --autounmask-write --autounmask media-sound/supercollider
+#emerge  --autounmask-write --autounmask media-sound/supercollider
+echo media-sound/supercollider ~amd64 >> /etc/portage/package.accept_keywords
+emerge supercollider
 emerge libheif
 emerge app-arch/bzip2
 emerge lshw
