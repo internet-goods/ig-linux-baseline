@@ -170,7 +170,7 @@ emerge app-containers/docker-cli
 emerge app-emulation/libvirt
 emerge app-emulation/virt-manager
 emerge app-emulation/virtualbox
-
+emerge sci-misc/boinc
 
 
 cp /usr/share/zoneinfo/America/Chicago /etc/localtime
