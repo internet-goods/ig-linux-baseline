@@ -126,6 +126,7 @@ python3 -m venv myllm_env
 cd myllm_env 
 source bin/activate  
 python3 -m pip install --upgrade gpt4all typer
+python3 -m pip install "gpt4all[cuda]" 
 #python hellllm install llm-gpt4all
 # 
 wget https://raw.githubusercontent.com/nomic-ai/gpt4all/main/gpt4all-bindings/cli/app.py
