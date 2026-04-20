@@ -50,7 +50,25 @@ service sshd reload
 update-rc.d ssh enable
 service ssh start
 
-
+#AI OVERLORDS GO!
+echo AI1 LLM
+apt -y install llm
+llm install claude
+llm install llm-gpt4all
+python3 -m venv myllm_env
+cd myllm_env 
+source bin/activate  
+python3 -m pip install --upgrade gpt4all typer
+#python hellllm install llm-gpt4all
+# 
+wget https://raw.githubusercontent.com/nomic-ai/gpt4all/main/gpt4all-bindings/cli/app.py
+python3 app.py repl
+echo AI2 OLLAMA
+curl https://ollama.ai/install.sh | sh
+ollama pull llama3
+ollama run llama3 "Say 'Hello, world!'"
+echo AI3 WEKA
+#pdsh -R ssh -w "weka0-[0-7]" "curl https://[GET.WEKA.IO-TOKEN]@get.weka.io/dist/v1/install/4.0.5.14/4.0.5.14 | sh
 apt-get -y install apktool
 apt-get -y install checksec
 apt-get -y install hcxtools
@@ -81,7 +99,43 @@ apt -y install python3-dotenv
 apt -y install python3-pyautogui
 apt -y install python3-sklearn
 apt -y install maltego
-#media apps
+#media apps#AI OVERLORDS GO!
+echo AI1 LLM
+apt -y install llm
+llm install claude
+llm install llm-gpt4all
+python3 -m venv myllm_env
+cd myllm_env 
+source bin/activate  
+python3 -m pip install --upgrade gpt4all typer
+#python hellllm install llm-gpt4all
+# 
+wget https://raw.githubusercontent.com/nomic-ai/gpt4all/main/gpt4all-bindings/cli/app.py
+python3 app.py repl
+echo AI2 OLLAMA
+curl https://ollama.ai/install.sh | sh
+ollama pull llama3
+ollama run llama3 "Say 'Hello, world!'"
+echo AI3 WEKA
+#pdsh -R ssh -w "weka0-[0-7]" "curl https://[GET.WEKA.IO-TOKEN]@get.weka.io/dist/v1/install/4.0.5.14/4.0.5.14 | sh#AI OVERLORDS GO!
+echo AI1 LLM
+apt -y install llm
+llm install claude
+llm install llm-gpt4all
+python3 -m venv myllm_env
+cd myllm_env 
+source bin/activate  
+python3 -m pip install --upgrade gpt4all typer
+#python hellllm install llm-gpt4all
+# 
+wget https://raw.githubusercontent.com/nomic-ai/gpt4all/main/gpt4all-bindings/cli/app.py
+python3 app.py repl
+echo AI2 OLLAMA
+curl https://ollama.ai/install.sh | sh
+ollama pull llama3
+ollama run llama3 "Say 'Hello, world!'"
+echo AI3 WEKA
+#pdsh -R ssh -w "weka0-[0-7]" "curl https://[GET.WEKA.IO-TOKEN]@get.weka.io/dist/v1/install/4.0.5.14/4.0.5.14 | sh
 apt -y install supercollider
 apt -y install mpv
 apt -y install vlc
@@ -165,7 +219,7 @@ llm install llm-gpt4all
 python3 -m venv myllm_env
 cd myllm_env 
 source bin/activate  
-python3 -m pip install --upgrade gpt4all typer
+python3 -m pip install --upgrade gpt4all typer typing-extensions
 #python hellllm install llm-gpt4all
 # 
 wget https://raw.githubusercontent.com/nomic-ai/gpt4all/main/gpt4all-bindings/cli/app.py
@@ -173,6 +227,7 @@ python3 app.py repl
 echo AI2 OLLAMA
 curl https://ollama.ai/install.sh | sh
 ollama pull llama3
-ollama run llama3 "Say 'Hello, world!'"
+ollama pull dolphin-llama3
+ollama pull llama2-uncensored
 echo AI3 WEKA
 #pdsh -R ssh -w "weka0-[0-7]" "curl https://[GET.WEKA.IO-TOKEN]@get.weka.io/dist/v1/install/4.0.5.14/4.0.5.14 | sh
