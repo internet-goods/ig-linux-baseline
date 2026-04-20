@@ -232,3 +232,5 @@ ollama pull dolphin-llama3
 ollama pull llama2-uncensored
 echo AI3 WEKA
 #pdsh -R ssh -w "weka0-[0-7]" "curl https://[GET.WEKA.IO-TOKEN]@get.weka.io/dist/v1/install/4.0.5.14/4.0.5.14 | sh
+echo AI4 Openclaw
+curl -fsSL https://openclaw.ai/install.sh | bash
