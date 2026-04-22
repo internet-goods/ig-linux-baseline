@@ -74,6 +74,10 @@ emerge app-admin/gkrellm
 emerge app-misc/screen
 emerge net-wireless/iw
 emerge app-benchmarks/bonnie
+emerge app-benchmarks/bonnie++
+mount /boot
+emerge sys-firmware/intel-microcode
+
 emerge sys-apps/baobab
 echo app-forensics/lynis ~amd64 >> /etc/portage/package.accept_keywords
 emerge app-forensics/lynis
