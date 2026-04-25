@@ -71,6 +71,7 @@ rc-update add haveged
 emerge sys-apps/rng-tools
 emerge app-admin/sysstat
 emerge app-admin/gkrellm
+emerge app-admin/ccze
 emerge app-misc/screen
 emerge net-wireless/iw
 emerge app-benchmarks/bonnie
