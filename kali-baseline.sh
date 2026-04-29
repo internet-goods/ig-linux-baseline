@@ -84,7 +84,7 @@ apt-get -y install libreoffice-calc
 apt-get -y install yubikey-manager-qt
 apt-get -y install keepassxc-full
 apt-get -y install neowofetch
-
+apt -y install jupyter-notebook jupyter-core python3-ipykernel
 apt -y install inxi
 apt -y install python3-selenium
 apt -y install python3-bs4
