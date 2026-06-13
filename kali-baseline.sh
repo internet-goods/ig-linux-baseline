@@ -15,6 +15,15 @@ bash debian-rsyslog.conf.sh
 bash debian-sysctl.conf.sh
 apt -y install sysstat
 apt -y install mdadm
+apt -y install htop
+apt -y install gimp
+apt -y install audacity
+apt -y install strace
+apt -y install iotop iftop
+apt -y install pidgin*
+apt -y zenity #steam
+
+
 systemctl enable sysstat
 sed -i 's/false/true/g' /etc/default/sysstat
 update-rc.d acct enable
