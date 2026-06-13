@@ -6,7 +6,7 @@ echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
 echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
 #debian-modprobe.sh
 mount -o remount,hidepid=2 /proc
-debian-pam-common-password.sh
+#debian-pam-common-password.sh
 #debian-profile.sh
 #debian-rsyslog.conf.sh
 debian-sysctl.conf.sh
@@ -41,7 +41,7 @@ echo "MaxAuthTries 4" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "MaxSessions 2" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "TCPKeepAlive no" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "Port 220" >> /etc/ssh/sshd_config.d/baseline.conf
+#echo "Port 220" >> /etc/ssh/sshd_config.d/baseline.conf
 service sshd reload
 update-rc.d ssh enable
 service ssh start
@@ -132,14 +132,15 @@ apt -y install kismet*
 #proxy
 apt-get -y install privoxy docker-compose
 #vuln scanners
-apt-get -y install sqlmap nikto wapiti 
-apt-get -y install suricata* psad chaosreader ipcalc driftnet arpwatch arpon
+#apt-get -y install sqlmap nikto wapiti 
+apt-get -y install ipcalc
+#suricata* psad chaosreader ipcalc driftnet arpwatch arpon
 #selinux
 #apt-get -y install setools setools-gui selinux-policy-default selinux-basics 
 #av
 apt-get -y install clamav yara rkhunter aide chkrootkit acct logwatch tripwire fail2ban
 #forensics
-apt-get -y install strace gdb dcfldd pngcheck autopsy ddrescue 
+apt-get -y install strace gdb   
 apt -y install libpcre3-dev
 apt -y install libnm-dev
 apt -y install libnl-3-dev
@@ -151,7 +152,6 @@ apt -y install libprotobuf-c-dev
 apt -y install libprotobuf-dev
 apt -y install libssl-dev
 apt -y install libsqlite3-dev
-apt -y install kismet
 apt -y install pdfgrep
 apt -y install v4l-utils
 apt -y install wavemon
@@ -160,12 +160,11 @@ apt -y install horst
 apt -y install hashcat*
 apt -y install nvidia-cuda-toolkit
 apt -y install libnl*
-apt-get -y install bettercap
 apt-get -y install rng-tools
 apt-get -y install mmc-utils
 apt-get -y install ethtool
 apt-get -y install ntpstat ntpdate ntp
-apt-get -y install gkrellm* lshw
+apt-get -y install lshw
 apt-get -y install libimage-exiftool-perl zsteg
 apt -y install multimon-ng
 
