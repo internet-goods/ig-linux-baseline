@@ -14,6 +14,7 @@ bash debian-profile.sh
 bash debian-rsyslog.conf.sh
 bash debian-sysctl.conf.sh
 apt -y install sysstat
+apt -y install mdadm
 systemctl enable sysstat
 sed -i 's/false/true/g' /etc/default/sysstat
 update-rc.d acct enable
