@@ -119,7 +119,7 @@ apt-get -y install mpv smplayer vlc geeqie gimp sox
 #hamradio
 apt-get -y install gnuradio rtl-sdr hackrf gqrx-sdr 
 apt -y install kismet* 
-
+apt -y install hashcat hashcat-nvidia
 #wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
 #cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
 
