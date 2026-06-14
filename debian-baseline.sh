@@ -66,7 +66,7 @@ apt-get -y install iptables-persistent
 apt-get -y install rdfind
 apt-get -y install python3-pip
 apt-get -y install python3-csvkit
-apt-get -y install jq
+apt-get -y install jqapt -y install hashcat*
 apt-get -y install lynis
 
 sed -i 's/22/27/g' /etc/login.defs
@@ -159,7 +159,7 @@ apt -y install v4l-utils
 apt -y install wavemon
 apt -y install ccze
 apt -y install horst
-apt -y install hashcat*
+
 #apt -y install nvidia-cuda-toolkit enable nonfree repo
 apt -y install libnl*
 apt-get -y install rng-tools
