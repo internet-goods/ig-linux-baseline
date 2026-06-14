@@ -1,5 +1,6 @@
 cp audit.rules /etc/audit
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
+sudo apt -y install audit
 /etc/init.d/auditd restart
 debian-iptables.sh
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
@@ -118,7 +119,7 @@ apt -y install x11-apps inxi
 apt-get -y install mpv smplayer vlc geeqie gimp sox
 #hamradio
 apt-get -y install gnuradio rtl-sdr hackrf gqrx-sdr 
-apt -y install kismet* 
+
 apt -y install hashcat hashcat-nvidia
 #wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
 #cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
@@ -158,7 +159,7 @@ apt -y install wavemon
 apt -y install ccze
 apt -y install horst
 apt -y install hashcat*
-apt -y install nvidia-cuda-toolkit
+#apt -y install nvidia-cuda-toolkit enable nonfree repo
 apt -y install libnl*
 apt-get -y install rng-tools
 apt-get -y install mmc-utils
