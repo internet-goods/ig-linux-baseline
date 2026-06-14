@@ -167,4 +167,6 @@ apt-get -y install ntpstat ntpdate ntp
 apt-get -y install lshw
 apt-get -y install libimage-exiftool-perl zsteg
 apt -y install multimon-ng
+apt -y linux-source
+apt -y linux-headers-$(uname -r)
 
