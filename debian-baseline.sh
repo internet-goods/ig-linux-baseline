@@ -50,7 +50,7 @@ echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
 apt -y install apt-show-versions
 apt -y install screen
 apt-get -y install alpine
-apt-get -y install htop iotop iftop lm-sensors audispd-plugins usbguard sysstat hdparm
+apt-get -y install htop iotop iftop lm-sensors audispd-plugins  sysstat hdparm
 apt-get -y install bc
 apt-get -y install net-tools
 #pam
