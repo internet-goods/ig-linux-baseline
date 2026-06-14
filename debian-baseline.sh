@@ -66,7 +66,7 @@ apt-get -y install iptables-persistent
 apt-get -y install rdfind
 apt-get -y install python3-pip
 apt-get -y install python3-csvkit
-apt-get -y install jqapt -y install hashcat*
+apt-get -y install jq
 apt-get -y install lynis
 
 sed -i 's/22/27/g' /etc/login.defs
