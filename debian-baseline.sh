@@ -44,9 +44,6 @@ echo "MaxSessions 2" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "TCPKeepAlive no" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
 #echo "Port 220" >> /etc/ssh/sshd_config.d/baseline.conf
-service sshd reload
-update-rc.d ssh enable
-service ssh start
 apt -y install apt-show-versions
 apt -y install screen
 apt-get -y install alpine
@@ -159,7 +156,6 @@ apt -y install v4l-utils
 apt -y install wavemon
 apt -y install ccze
 apt -y install horst
-
 #apt -y install nvidia-cuda-toolkit enable nonfree repo
 apt -y install libnl*
 apt-get -y install rng-tools
@@ -171,4 +167,3 @@ apt-get -y install libimage-exiftool-perl zsteg
 apt -y install multimon-ng
 apt -y linux-source
 apt -y linux-headers-$(uname -r)
-
