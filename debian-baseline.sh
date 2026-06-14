@@ -3,7 +3,12 @@ sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 sudo apt -y install audit
 systemctl enable audit
 systemctl start audit
-debian-iptables.sh
+systemctl enabled acct
+systemctl start acct
+systemctl enable ssh
+systemctl start ssh
+systemctl set-default multi-user.target
+
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
 echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
 #debian-modprobe.sh
@@ -15,10 +20,7 @@ debian-sysctl.conf.sh
 apt -y install sysstat
 systemctl enable sysstat
 sed -i 's/false/true/g' /etc/default/sysstat
-update-rc.d acct enable
-update-rc.d ssh enable
-service ssh start
-service acct start
+
 cp issue /etc/issue
 cp issue /etc/issue.net
 # Open inbound ssh(tcp port 22) connections
@@ -59,6 +61,7 @@ apt-get -y install apt-listbugs debian-goodies needrestart debsecan apt-transpor
 apt-get -y install debsums
 apt-get -y install unattended-upgrades apt-listchanges
 apt-get -y install iptables-persistent
+debian-iptables.sh
 #dedup
 apt-get -y install rdfind
 apt-get -y install python3-pip
@@ -167,3 +170,4 @@ apt-get -y install libimage-exiftool-perl zsteg
 apt -y install multimon-ng
 apt -y linux-source
 apt -y linux-headers-$(uname -r)
+
