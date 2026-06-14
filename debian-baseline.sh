@@ -1,7 +1,8 @@
 cp audit.rules /etc/audit
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 sudo apt -y install audit
-/etc/init.d/auditd restart
+systemctl enable audit
+systemctl start audit
 debian-iptables.sh
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
 echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
