@@ -63,7 +63,7 @@ apt-get -y install debsums
 apt-get -y install unattended-upgrades apt-listchanges
 apt-get -y install iptables-persistent
 debian-iptables.sh
-#dedup
+apt -y install python3-full python3-venv
 apt-get -y install rdfind
 apt-get -y install python3-pip
 apt-get -y install python3-csvkit
