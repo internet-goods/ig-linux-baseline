@@ -8,6 +8,9 @@ systemctl start acct
 systemctl enable ssh
 systemctl start ssh
 systemctl set-default multi-user.target
+apt -y install sysstat
+systemctl enable sysstat
+sed -i 's/false/true/g' /etc/default/sysstat
 
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
 echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
@@ -17,9 +20,7 @@ mount -o remount,hidepid=2 /proc
 #debian-profile.sh
 #debian-rsyslog.conf.sh
 debian-sysctl.conf.sh
-apt -y install sysstat
-systemctl enable sysstat
-sed -i 's/false/true/g' /etc/default/sysstat
+
 
 cp issue /etc/issue
 cp issue /etc/issue.net
