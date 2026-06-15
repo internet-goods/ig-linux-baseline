@@ -1,8 +1,5 @@
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
-apt -y install audit
-cp audit.rules /etc/audit
-apt -y install sysstat
-sed -i 's/false/true/g' /etc/default/sysstat
+
 
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
 echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
@@ -39,6 +36,11 @@ echo "MaxSessions 2" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "TCPKeepAlive no" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
 #echo "Port 220" >> /etc/ssh/sshd_config.d/baseline.conf
+apt -y install smartmontools
+apt -y install audit
+cp audit.rules /etc/audit
+apt -y install sysstat
+sed -i 's/false/true/g' /etc/default/sysstat
 apt -y install apt-show-versions
 apt -y install screen
 apt-get -y install alpine
