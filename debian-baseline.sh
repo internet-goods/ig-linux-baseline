@@ -1,15 +1,7 @@
-cp audit.rules /etc/audit
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
-sudo apt -y install audit
-systemctl enable audit
-systemctl start audit
-systemctl enabled acct
-systemctl start acct
-systemctl enable ssh
-systemctl start ssh
-systemctl set-default multi-user.target
+apt -y install audit
+cp audit.rules /etc/audit
 apt -y install sysstat
-systemctl enable sysstat
 sed -i 's/false/true/g' /etc/default/sysstat
 
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
@@ -195,3 +187,4 @@ EOF
 apt-get update
 apt-get install firefox
 
+systemctl-baseline.sh
