@@ -1,4 +1,5 @@
 apt-get -y install alpine
+apt-get -y install apktool
 apt-get -y install apt-listbugs debian-goodies needrestart debsecan apt-transport-https
 apt-get -y install bc
 apt-get -y install boinc-client boinc-manager iozone3 sysbench
