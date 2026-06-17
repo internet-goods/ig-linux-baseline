@@ -11,3 +11,5 @@ git clone https://github.com/docker/docker-bench-security
 sh ./docker-bench-security/docker-bench-security.sh -l docker-bench-security-$(date -I).log
 echo check lynis.log after audit
 lynis audit system
+nmap -A -sV localhost -oA nmaplocalhostTCP
+nmap -A -sU -sV localhost --iA nmaplocalhostUDP
