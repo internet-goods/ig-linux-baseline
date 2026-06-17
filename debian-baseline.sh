@@ -1,7 +1,7 @@
 apt-baseline.sh
 sshd-baseline.sh
 ig-ipset.sh
-debian-iptables.sh
+iptables-baseline.sh
 sysctl-baseline.sh
 suricata-baseline.sh
 systemctl-baseline.sh
