@@ -1,7 +1,9 @@
 apt-baseline.sh
 sshd-baseline.sh
+ig-ipset.sh
 debian-iptables.sh
 sysctl-baseline.sh
+suricata-baseline.sh
 systemctl-baseline.sh
 modprobe-baseline.sh
 cron-baseline.sh
@@ -23,6 +25,7 @@ echo "SHA_CRYPT_MAX_ROUNDS 900000" >> /etc/login.defs
 echo "PASS_MIN_DAYS 1" >> /etc/login.defs
 echo umask 022 > /etc/profile.d/debian-baseline.sh
 
+ig-vulnscan.sh
 #wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
 #cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
 
