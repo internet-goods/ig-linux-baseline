@@ -23,6 +23,7 @@ apt-get -y install ntpstat ntpdate ntp
 apt-get -y install privoxy docker-compose
 apt-get -y install python3-csvkit
 apt-get -y install python3-pip
+apt -y install pidgin
 apt-get -y install rdfind
 apt-get -y install rng-tools
 #apt-get -y install setools setools-gui selinux-policy-default selinux-basics 
@@ -116,7 +117,7 @@ apt -y install libprotobuf-c-dev
 apt -y install libprotobuf-dev
 apt -y install libsensors-dev
 apt -y install libsqlite3-dev
-apt -y install libssl-dev
+apt -y install libssl-dapt -y install npmev
 apt -y install libusb-1.0-0-dev
 apt -y install libwebsockets-dev
 apt -y install mdadm
@@ -138,3 +139,20 @@ apt -y linux-headers-$(uname -r)
 #selinux
 #suricata* psad chaosreader ipcalc driftnet arpwatch arpon
 #tripwire
+apt -y install jupyter-notebook jupyter-core python3-ipykernel
+apt -y install python3-selenium
+apt -y install python3-bs4
+apt -y install python3-pandas
+apt -y install python3-pyautogui
+apt -y install python3-lxml
+#no python-future?
+apt -y install python3-futurist
+apt -y install python3-packaging
+apt -y install python3-bs4
+apt -y install python3-dotenv
+apt -y install python3-pyautogui
+apt -y install python3-sklearn
+apt -y install npm
+apt -y install stopwatch
+apt -y install llm
+#apt install supercollider
