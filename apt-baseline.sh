@@ -156,3 +156,24 @@ apt -y install npm
 apt -y install stopwatch
 apt -y install llm
 #apt install supercollider
+
+#firefox repo
+install -d -m 0755 /etc/apt/keyrings
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+
+tee /etc/apt/sources.list.d/mozilla.sources > /dev/null << EOF
+Types: deb
+URIs: https://packages.mozilla.org/apt
+Suites: mozilla
+Components: main
+Signed-By: /etc/apt/keyrings/packages.mozilla.org.asc
+EOF
+
+tee /etc/apt/preferences.d/mozilla > /dev/null << EOF
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+EOF
+
+apt-get update
+apt-get install firefox
