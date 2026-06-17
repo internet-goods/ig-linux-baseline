@@ -8,6 +8,7 @@ systemctl-baseline.sh
 modprobe-baseline.sh
 cron-baseline.sh
 smartd-baseline.sh
+ai-baseline.sh
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
 echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
