@@ -183,3 +183,22 @@ EOF
 
 apt-get update
 apt-get install firefox
+set -e
+
+# 2. Install prerequisites (wget is needed to fetch the deb package)
+echo "Installing prerequisites..."
+apt-get install -y wget gdebi-core
+
+# 3. Download the latest Google Chrome stable Debian package
+echo "Downloading Google Chrome..."
+wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/google-chrome-stable_current_amd64.deb
+
+# 4. Install the package and automatically resolve dependencies
+echo "Installing Google Chrome..."
+apt-get install -y /tmp/google-chrome-stable_current_amd64.deb
+
+# 5. Clean up the downloaded file
+rm /tmp/google-chrome-stable_current_amd64.deb
+
+echo "Google Chrome installation complete!"
+
