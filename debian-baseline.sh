@@ -1,6 +1,5 @@
+apt-baseline.sh
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
-
-
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
 echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
 #debian-modprobe.sh
@@ -9,8 +8,6 @@ mount -o remount,hidepid=2 /proc
 #debian-profile.sh
 #debian-rsyslog.conf.sh
 debian-sysctl.conf.sh
-
-
 cp issue /etc/issue
 cp issue /etc/issue.net
 # Open inbound ssh(tcp port 22) connections
@@ -36,40 +33,13 @@ echo "MaxSessions 2" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "TCPKeepAlive no" >> /etc/ssh/sshd_config.d/baseline.conf
 echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
 #echo "Port 220" >> /etc/ssh/sshd_config.d/baseline.conf
-apt -y install smartmontools
-apt -y install audit
 cp audit.rules /etc/audit
-apt -y install sysstat
 sed -i 's/false/true/g' /etc/default/sysstat
-apt -y install apt-show-versions
-apt -y install screen
-apt-get -y install alpine
-apt-get -y install htop iotop iftop lm-sensors audispd-plugins  sysstat hdparm
-apt-get -y install bc
-apt-get -y install net-tools
-#pam
-apt-get -y install libpam-tmpdir libpam-usb 
-apt-get -y install libpam-cracklib
-apt-get -y install libpam-passwdqc
-#apt
-apt-get -y install apt-listbugs debian-goodies needrestart debsecan apt-transport-https
-apt-get -y install debsums
-apt-get -y install unattended-upgrades apt-listchanges
-apt-get -y install iptables-persistent
 debian-iptables.sh
-apt -y install python3-full python3-venv
-apt-get -y install rdfind
-apt-get -y install python3-pip
-apt-get -y install python3-csvkit
-apt-get -y install jq
-apt-get -y install lynis
-
 sed -i 's/22/27/g' /etc/login.defs
 echo "SHA_CRYPT_MIN_ROUNDS 800000" >> /etc/login.defs
 echo "SHA_CRYPT_MAX_ROUNDS 900000" >> /etc/login.defs
 echo "PASS_MIN_DAYS 1" >> /etc/login.defs
-
-#disable modules
 echo "install cramfs /bin/true" > /etc/modprobe.d/debian-baseline.conf
 echo "install freevxfs /bin/true" >> /etc/modprobe.d/debian-baseline.conf
 echo "install jffs2 /bin/true" >> /etc/modprobe.d/debian-baseline.conf
@@ -88,9 +58,7 @@ echo "install tipc /bin/true" >> /etc/modprobe.d/debian-baseline.conf
 echo "install firewire-ohci /bin/true" >>  /etc/modprobe.d/debian-baseline.conf
 echo "install firewire-sbp2 /bin/true" >>  /etc/modprobe.d/debian-baseline.conf
 echo "install usb-storage /bin/true" >> /etc/modprobe.d/debian-baseline.conf
-
 echo umask 022 > /etc/profile.d/debian-baseline.sh
-
 chmod 600 /etc/crontab
 chmod 700 /etc/cron.d
 chmod 700 /etc/cron.daily
@@ -99,26 +67,6 @@ chmod 700 /etc/cron.weekly
 chmod 700 /etc/cron.monthly
 chmod 600 /etc/cron.deny
 
-#optionals
-#benchmarking
-apt-get -y install boinc-client boinc-manager iozone3 sysbench
-#browsers
-apt -y install w3m lynx
-apt-get -y install tiger
-apt-get -y install libreoffice-calc
-apt -y install sdcc
-apt -y install qemu-kvm qemu-system-arm qemu-system-x86 virt-manager
-apt -y install speedtest-cli
-apt -y install mdadm
-apt -y install x11-apps inxi
-apt -y install gdebi
-
-#media
-apt-get -y install mpv smplayer vlc geeqie gimp sox
-#hamradio
-apt-get -y install gnuradio rtl-sdr hackrf gqrx-sdr 
-
-apt -y install hashcat hashcat-nvidia
 #wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
 #cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
 
@@ -128,65 +76,12 @@ apt -y install hashcat hashcat-nvidia
 
 # 3. Update your package database and install signal
 #sudo apt update && sudo apt install signal-desktop
-#proxy
-apt-get -y install privoxy docker-compose
-#vuln scanners
-#apt-get -y install sqlmap nikto wapiti 
-apt-get -y install ipcalc
+
+
 #suricata* psad chaosreader ipcalc driftnet arpwatch arpon
 #selinux
 #apt-get -y install setools setools-gui selinux-policy-default selinux-basics 
-#av
-apt-get -y install clamav yara rkhunter aide chkrootkit acct logwatch tripwire fail2ban
-#forensics
-apt-get -y install strace gdb   
-apt -y install libpcre3-dev
-apt -y install libnm-dev
-apt -y install libnl-3-dev
-apt -y install libsensors-dev
-apt -y install libusb-1.0-0-dev
-apt -y install protobuf-compiler
-apt -y install libwebsockets-dev
-apt -y install libprotobuf-c-dev
-apt -y install libprotobuf-dev
-apt -y install libssl-dev
-apt -y install libsqlite3-dev
-apt -y install pdfgrep
-apt -y install v4l-utils
-apt -y install wavemon
-apt -y install ccze
-apt -y install horst
-#apt -y install nvidia-cuda-toolkit enable nonfree repo
-apt -y install libnl*
-apt-get -y install rng-tools
-apt-get -y install mmc-utils
-apt-get -y install ethtool
-apt-get -y install ntpstat ntpdate ntp
-apt-get -y install lshw
-apt-get -y install libimage-exiftool-perl zsteg
-apt -y install multimon-ng
-apt -y chromium
-apt -y linux-headers-$(uname -r)
 
-#firefox
-install -d -m 0755 /etc/apt/keyrings
-wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
 
-tee /etc/apt/sources.list.d/mozilla.sources > /dev/null << EOF
-Types: deb
-URIs: https://packages.mozilla.org/apt
-Suites: mozilla
-Components: main
-Signed-By: /etc/apt/keyrings/packages.mozilla.org.asc
-EOF
-
-tee /etc/apt/preferences.d/mozilla > /dev/null << EOF
-Package: *
-Pin: origin packages.mozilla.org
-Pin-Priority: 1000
-EOF
-
-apt-get update
-apt-get install firefox
 
 systemctl-baseline.sh
