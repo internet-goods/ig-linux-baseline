@@ -20,16 +20,7 @@ sed -i 's/22/27/g' /etc/login.defs
 echo "SHA_CRYPT_MIN_ROUNDS 800000" >> /etc/login.defs
 echo "SHA_CRYPT_MAX_ROUNDS 900000" >> /etc/login.defs
 echo "PASS_MIN_DAYS 1" >> /etc/login.defs
-
-echo "install usb-storage /bin/true" >> /etc/modprobe.d/debian-baseline.conf
 echo umask 022 > /etc/profile.d/debian-baseline.sh
-chmod 600 /etc/crontab
-chmod 700 /etc/cron.d
-chmod 700 /etc/cron.daily
-chmod 700 /etc/cron.hourly
-chmod 700 /etc/cron.weekly
-chmod 700 /etc/cron.monthly
-chmod 600 /etc/cron.deny
 
 #wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
 #cat signal-desktop-keyring.gpg | sudo tee -a /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
