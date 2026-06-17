@@ -11,6 +11,7 @@ apt-get -y install htop iotop iftop lm-sensors audispd-plugins  sysstat hdparm
 apt-get -y install ipcalc
 apt-get -y install iptables-persistent
 apt-get -y install jq
+apt -y install jupyter-notebook jupyter-core python3-ipykernel
 apt-get -y install libimage-exiftool-perl zsteg
 apt-get -y install libpam-cracklib
 apt-get -y install libpam-passwdqc
