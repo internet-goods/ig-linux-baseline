@@ -156,6 +156,7 @@ apt -y install python3-sklearn
 apt -y install npm
 apt -y install stopwatch
 apt -y install llm
+apt -y install yubikey-manager-qt
 #apt install supercollider
 
 #firefox repo
