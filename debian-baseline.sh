@@ -1,4 +1,8 @@
 apt-baseline.sh
+sshd-baseline.sh
+debian-iptables.sh
+debian-sysctl.conf.sh
+systemctl-baseline.sh
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
 echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
@@ -7,35 +11,10 @@ mount -o remount,hidepid=2 /proc
 #debian-pam-common-password.sh
 #debian-profile.sh
 #debian-rsyslog.conf.sh
-debian-sysctl.conf.sh
 cp issue /etc/issue
 cp issue /etc/issue.net
-# Open inbound ssh(tcp port 22) connections
-#5.2 ssh cfg
-chmod og-rwx /etc/ssh/sshd_config
-echo "Banner /etc/issue.net" > /etc/ssh/sshd_config.d/baseline.conf
-echo "LogLevel VERBOSE" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "X11Forwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "MaxAuthTries 3" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "IgnoreRhosts yes" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "HostbasedAuthentication no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "PermitRootLogin no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "PermitEmptyPasswords no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "PermitUserEnvironment no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "Ciphers aes256-ctr,aes192-ctr,aes128-ctr" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "LoginGraceTime 60" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "AllowTcpForwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "ClientAliveCountMax 2" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "Compression no"  >> /etc/ssh/sshd_config.d/baseline.conf
-echo "MaxAuthTries 4" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "MaxSessions 2" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "TCPKeepAlive no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
-#echo "Port 220" >> /etc/ssh/sshd_config.d/baseline.conf
 cp audit.rules /etc/audit
 sed -i 's/false/true/g' /etc/default/sysstat
-debian-iptables.sh
 sed -i 's/22/27/g' /etc/login.defs
 echo "SHA_CRYPT_MIN_ROUNDS 800000" >> /etc/login.defs
 echo "SHA_CRYPT_MAX_ROUNDS 900000" >> /etc/login.defs
@@ -84,4 +63,4 @@ chmod 600 /etc/cron.deny
 
 
 
-systemctl-baseline.sh
+
