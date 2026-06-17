@@ -10,7 +10,7 @@ suricata --build-info
 #sed   windows: []
 #set eXT_NET to wget http://ipinfo.io/ip -qO -
 #sed - interface: eth0 to wlan0
-/etc/init.d/suricata start
-/etc/init.d/suricata status
-tail /var/log/suricata/suricata.log
+#/etc/init.d/suricata start
+#/etc/init.d/suricata status
+#tail /var/log/suricata/suricata.log
 #todo logrotrate
