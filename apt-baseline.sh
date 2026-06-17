@@ -3,6 +3,7 @@ apt-get -y install apt-listbugs debian-goodies needrestart debsecan apt-transpor
 apt-get -y install bc
 apt-get -y install boinc-client boinc-manager iozone3 sysbench
 apt-get -y install clamav yara rkhunter aide chkrootkit acct logwatch  fail2ban
+apt -y install condor
 apt-get -y install debsums
 apt-get -y install ethtool
 apt-get -y install gnuradio rtl-sdr hackrf gqrx-sdr 
