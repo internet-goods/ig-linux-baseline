@@ -3,6 +3,7 @@ apt-get -y install apktool
 apt-get -y install apt-listbugs debian-goodies needrestart debsecan apt-transport-https
 apt-get -y install bc
 apt-get -y install boinc-client boinc-manager iozone3 sysbench
+apt-get -y install btscanner
 apt-get -y install clamav yara rkhunter aide chkrootkit acct logwatch  fail2ban
 apt -y install condor
 apt-get -y install debsums
@@ -21,6 +22,7 @@ apt-get -y install lshw inxi
 apt-get -y install lynis
 apt-get -y install mmc-utils
 apt-get -y install mpv smplayer vlc geeqie gimp sox
+apt-get -y install neowofetch
 apt-get -y install net-tools
 apt-get -y install ntpstat ntpdate ntp
 apt-get -y install privoxy docker-compose
