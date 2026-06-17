@@ -1,7 +1,7 @@
 apt-baseline.sh
 sshd-baseline.sh
 debian-iptables.sh
-debian-sysctl.conf.sh
+sysctl-baseline.sh
 systemctl-baseline.sh
 modprobe-baseline.sh
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
