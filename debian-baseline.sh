@@ -7,7 +7,8 @@ suricata-baseline.sh
 systemctl-baseline.sh
 modprobe-baseline.sh
 cron-baseline.sh
-smartd-baseline.sh
+echo "DEVICESCAN -a -o on -S on -n standby,q -s (S/../.././02|L/../01/./04) -m root -M exec /usr/libexec/smartmontools/smartd-notify" > /etc/smartd.conf
+systemctl restart smartd
 ai-baseline.sh
 sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
