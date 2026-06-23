@@ -5,7 +5,7 @@ services:
     labels:
       - "ig=true"
     # The FQDN (Fully Qualified Domain Name) of your mail server
-    hostname: node47.internet-goods.com
+    hostname: example.com
     env_file: mailserver.env
     ports:
       - "25:25"    # SMTP
