@@ -1,18 +1,16 @@
 #!/bin/bash
-cp audit.rules /etc/audit
-sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
-/etc/init.d/auditd restart
 
+mount -o remount,hidepid=2 /proc
 bash debian-cron.sh
 
 echo "* hard core 0" > /etc/security/limits.d/ig-baseline.conf
 echo "* soft core 0" > /etc/security/limits.d/ig-baseline.conf
 
-bash debian-mount.sh
 sed -i 's/sha512/sha512 rounds=800000/g' /etc/pam.d/common-password
-bash debian-profile.sh
-bash debian-rsyslog.conf.sh
-bash debian-sysctl.conf.sh
+
+
+bash sysctl-basdeline.sh
+bash sshd-baseline.sh
 apt -y install sysstat
 apt -y install mdadm
 apt -y install htop
@@ -26,59 +24,15 @@ apt -y zenity #steam
 
 systemctl enable sysstat
 sed -i 's/false/true/g' /etc/default/sysstat
-update-rc.d acct enable
-update-rc.d ssh enable
-service ssh start
 service acct start
-mount -o remount,hidepid=2 /proc
+
 cp issue /etc/issue
 cp issue /etc/issue.net
 
 # Open inbound ssh(tcp port 22) connections
 #5.2 ssh cfg
-chmod og-rwx /etc/ssh/sshd_config
-echo "LogLevel VERBOSE" > /etc/ssh/sshd_config.d/baseline.conf
-echo "X11Forwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "MaxAuthTries 3" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "IgnoreRhosts yes" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "HostbasedAuthentication no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "PermitRootLogin no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "PermitEmptyPasswords no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "PermitUserEnvironment no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "Ciphers aes256-ctr,aes192-ctr,aes128-ctr" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "LoginGraceTime 60" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "AllowTcpForwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "ClientAliveCountMax 2" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "Compression no"  >> /etc/ssh/sshd_config.d/baseline.conf
-echo "MaxAuthTries 4" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "MaxSessions 2" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "TCPKeepAlive no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "AllowAgentForwarding no" >> /etc/ssh/sshd_config.d/baseline.conf
-echo "Port 220" >> /etc/ssh/sshd_config.d/baseline.conf
-service sshd reload
-update-rc.d ssh enable
-service ssh start
 
-#AI OVERLORDS GO!
-echo AI1 LLM
-apt -y install llm
-llm install claude
-llm install llm-gpt4all
-python3 -m venv myllm_env
-cd myllm_env 
-source bin/activate  
-python3 -m pip install --upgrade gpt4all typer
-#python hellllm install llm-gpt4all
-# 
-wget https://raw.githubusercontent.com/nomic-ai/gpt4all/main/gpt4all-bindings/cli/app.py
-python3 app.py repl
-echo AI2 OLLAMA
-curl https://ollama.ai/install.sh | sh
-ollama pull llama3
-ollama run llama3 "Say 'Hello, world!'"
-echo AI3 WEKA
-#pdsh -R ssh -w "weka0-[0-7]" "curl https://[GET.WEKA.IO-TOKEN]@get.weka.io/dist/v1/install/4.0.5.14/4.0.5.14 | sh
+
 apt-get -y install apktool
 apt-get -y install checksec
 apt-get -y install hcxtools
@@ -156,6 +110,10 @@ apt -y install stopwatch
 npm install elasticdump
 #apt-add-repository -y ppa:team-xbmc/ppa
 #apt -y install kodi
+apt -y install auditd
+cp audit.rules /etc/audit
+sed -i 's/no/yes/g' /etc/audit/plugins.d/syslog.conf
+/etc/init.d/auditd restart
 
 apt -y install 
 apt -y autoremove 
