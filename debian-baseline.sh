@@ -7,6 +7,7 @@ suricata-baseline.sh
 systemctl-baseline.sh
 modprobe-baseline.sh
 cron-baseline.sh
+systemd-baseline.sh
 echo "DEVICESCAN -a -o on -S on -n standby,q -s (S/../.././02|L/../01/./04) -m root -M exec /usr/libexec/smartmontools/smartd-notify" > /etc/smartd.conf
 systemctl restart smartd
 ai-baseline.sh
@@ -24,7 +25,7 @@ cp audit.rules /etc/audit
 sed -i 's/false/true/g' /etc/default/sysstat
 sed -i 's/22/27/g' /etc/login.defs
 echo "SHA_CRYPT_MIN_ROUNDS 800000" >> /etc/login.defs
-echo "SHA_CRYPT_MAX_ROUNDS 900000" >> /etc/login.defs
+echo "SHA_CRYPT_MAX_ROUNDS 900000" >> /etc/login.defs/etc/systemd/journald.conf
 echo "PASS_MIN_DAYS 1" >> /etc/login.defs
 echo umask 022 > /etc/profile.d/debian-baseline.sh
 
@@ -43,7 +44,6 @@ ig-vulnscan.sh
 #suricata* psad chaosreader ipcalc driftnet arpwatch arpon
 #selinux
 #apt-get -y install setools setools-gui selinux-policy-default selinux-basics 
-
 
 
 
