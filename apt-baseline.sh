@@ -25,6 +25,7 @@ apt-get -y install mpv smplayer vlc geeqie gimp sox
 apt-get -y install neowofetch
 apt-get -y install net-tools
 apt-get -y install ntpstat ntpdate ntp
+apt-get -y install ntpsec ntpsec-ntpdate
 apt-get -y install privoxy docker-compose
 apt-get -y install python3-csvkit
 apt-get -y install python3-pip
