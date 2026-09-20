@@ -163,12 +163,14 @@ docker run -d --name ig-pihole --network=sobridge -p 53:53/tcp -p 53:53/udp -p 8
 mkdir /nsm/misp
 docker run -it --name ig-misp --network=sobridge --rm -v /nsm/misp:/var/lib/mysql harvarditsecurity/misp /init-db
 docker run -it -d --name ig-misp --network=sobridge -p 446:443 -p 82:80 -p 3306:3306 -v /nsm/misp:/var/lib/mysql harvarditsecurity/misp
-mkdir /nsm/samba
-docker run -it --restart unless-stopped --name ig-samba -p 139:139/tcp -p 445:445/tcp -p 137:137/udp -p 138:138/udp -v /nsm/samba:/share -d dperson/samba -u "igsamba;password" -s "samba;/share;yes;no;yes;igsamba"
-mkdir /nsm/gpu
-curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo > /etc/yum.repos.d/nvidia-container-toolkit.repo
-dnf install -y nvidia-container-toolkit
-nvidia-ctk runtime configure --runtime=docker
+#mkdir /nsm/samba
+#docker run -it --restart unless-stopped --name ig-samba -p 139:139/tcp -p 445:445/tcp -p 137:137/udp -p 138:138/udp -v /nsm/samba:/share -d dperson/samba -u "igsamba;password" -s "samba;/share;yes;no;yes;igsamba"
+#mkdir /nsm/gpu
+#curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo > /etc/yum.repos.d/nvidia-container-toolkit.repo
+#dnf install -y nvidia-container-toolkit
+#nvidia-ctk runtime configure --runtime=docker
 systemctl restart docker
-docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
-  
+#docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
+mkdir -p /opt/so/saltstack/local/salt/elasticsearch/files/
+cp /opt/so/saltstack/default/salt/elasticsearch/files/elasticsearch.yml /opt/so/saltstack/local/salt/elasticsearch/files/elasticsearch.yml
+echo ready to customize /opt/so/saltstack/local/salt/elasticsearch/files/elasticsearch.yml
