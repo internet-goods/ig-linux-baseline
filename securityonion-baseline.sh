@@ -171,5 +171,11 @@ docker run -it -d --name ig-misp --network=sobridge -p 446:443 -p 82:80 -p 3306:
 #nvidia-ctk runtime configure --runtime=docker
 systemctl restart docker
 #docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
-echo add path.repo to /opt/so/saltstack/local/pillar/elasticsearch
+echo add path.repo to /opt/so/saltstack/local/pillar/elasticsearch using gui
+echo add repo dir to /opt/so/saltstack/local/pillar/docker/soc_docker.sls
 docker inspect so-elasticsearch --format '{{range .Mounts}}{{println .Source " -> " .Destination}}{{end}}'
+echo docker: 
+echo    containers:
+echo       so-elasticsearch:
+echo            custom_bind_mounts:
+echo                - /export:/export:rw
