@@ -171,6 +171,4 @@ docker run -it -d --name ig-misp --network=sobridge -p 446:443 -p 82:80 -p 3306:
 #nvidia-ctk runtime configure --runtime=docker
 systemctl restart docker
 #docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
-mkdir -p /opt/so/saltstack/local/salt/elasticsearch/files/
-cp /opt/so/saltstack/default/salt/elasticsearch/files/elasticsearch.yml /opt/so/saltstack/local/salt/elasticsearch/files/elasticsearch.yml
-echo ready to customize /opt/so/saltstack/local/salt/elasticsearch/files/elasticsearch.yml
+echo add path.repo to /opt/so/saltstack/local/pillar/elasticsearch
