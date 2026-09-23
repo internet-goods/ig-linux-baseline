@@ -34,7 +34,7 @@ dnf -y install make m4
 dnf -y install sendmail
 systemctl enable sendmail
 systemctl start sendmail
-#mlocate
+dnf -y install mlocate
 #hardening
 echo "install dccp /bin/true" >> /etc/modprobe.d/securityonion-baseline.conf
 echo "install sctp /bin/true" >> /etc/modprobe.d/securityonion-baseline.conf
