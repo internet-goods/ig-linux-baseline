@@ -86,6 +86,7 @@ apt -y install stopwatch
 apt -y install llm
 apt -y install yubikey-manager-qt
 apt -y install ncat
+apt -y install apktool
 #apt install supercollider
 
 #firefox repo
