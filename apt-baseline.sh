@@ -91,6 +91,7 @@ apt -y install apktool
 apt -y install ripgrep
 apt -y install audacity
 apt -y install ghidra
+apt -y install autopsy
 #apt install supercollider
 
 #firefox repo
