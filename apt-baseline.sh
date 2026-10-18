@@ -89,6 +89,7 @@ apt -y install yubikey-manager-qt
 apt -y install ncat
 apt -y install apktool
 apt -y install ripgrep
+apt -y install audacity
 #apt install supercollider
 
 #firefox repo
