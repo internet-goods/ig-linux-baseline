@@ -94,6 +94,9 @@ apt -y install ghidra
 apt -y install autopsy
 apt -y install zaproxy
 apt -y install bandit
+apt -y install astronomical-almanac
+apt -y install stellarium
+
 #apt install supercollider
 
 #firefox repo
