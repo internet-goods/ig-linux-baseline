@@ -13,7 +13,9 @@ apt-get -y install htop iotop iftop lm-sensors audispd-plugins  sysstat hdparm
 apt-get -y install ipcalc
 apt-get -y install iptables-persistent
 apt-get -y install jq
-apt -y install jupyter-notebook jupyter-core python3-ipykernel
+apt -y install jupyter-notebook 
+apt -y install jupyter-core
+apt -y install python3-ipykernel
 apt-get -y install libimage-exiftool-perl zsteg
 apt-get -y install libpam-cracklib
 apt-get -y install libpam-passwdqc
@@ -69,7 +71,6 @@ apt -y install w3m lynx chromium
 apt -y install wavemon
 apt -y install x11-apps 
 apt -y linux-headers-$(uname -r)
-apt -y install jupyter-notebook jupyter-core python3-ipykernel
 apt -y install python3-selenium
 apt -y install python3-bs4
 apt -y install python3-pandas
