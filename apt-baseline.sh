@@ -92,6 +92,8 @@ apt -y install ripgrep
 apt -y install audacity
 apt -y install ghidra
 apt -y install autopsy
+apt -y install zaproxy
+apt -y install bandit
 #apt install supercollider
 
 #firefox repo
