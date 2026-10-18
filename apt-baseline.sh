@@ -96,6 +96,7 @@ apt -y install zaproxy
 apt -y install bandit
 apt -y install astronomical-almanac
 apt -y install stellarium
+apt -y install ssh-audit
 
 #apt install supercollider
 
