@@ -90,6 +90,7 @@ apt -y install ncat
 apt -y install apktool
 apt -y install ripgrep
 apt -y install audacity
+apt -y install ghidra
 #apt install supercollider
 
 #firefox repo
