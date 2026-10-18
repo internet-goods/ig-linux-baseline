@@ -34,7 +34,7 @@ apt-get -y install rdfind
 apt-get -y install rng-tools
 #apt-get -y install setools setools-gui selinux-policy-default selinux-basics 
 apt-get -y install sqlmap nikto wapiti 
-apt-get -y install strace gdb   
+apt-get -y install strace gdb ltrace
 apt-get -y install tiger
 apt-get -y install unattended-upgrades apt-listchanges
 apt -y install apt-show-versions
