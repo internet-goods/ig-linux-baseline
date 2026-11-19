@@ -97,6 +97,8 @@ apt -y install bandit
 apt -y install astronomical-almanac
 apt -y install stellarium
 apt -y install ssh-audit
+apt -y install quake3 quake2 quake openarena
+apt -y install csvkit
 
 #apt install supercollider
 
